@@ -9,6 +9,9 @@ lerna-debug.log*
 
 node_modules
 dist
+build
+*.log
+
 dist-ssr
 *.local
 
@@ -22,3 +25,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+config.bat
