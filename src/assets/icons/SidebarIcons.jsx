@@ -6,9 +6,11 @@ export const HomeIcon = ({ size = 24, color = "#e7e9ea", ...props }) => (
     viewBox="0 0 24 24"
     width={size}
     height={size}
-    fill={color}
+    stroke={color}
+    fill="none"
+    strokeWidth="2"
     {...props}>
-    <path d="M21.591 7.146L12.52 1.157c-.316-.21-.724-.21-1.04 0l-9.071 5.99c-.26.173-.409.456-.409.757v13.183c0 .502.418.913.929.913H9.14c.51 0 .929-.41.929-.913v-7.075h3.909v7.075c0 .502.417.913.928.913h6.165c.511 0 .929-.41.929-.913V7.904c0-.301-.158-.584-.408-.758z" />
+    <path d="M3 9.5l9-7 9 7v10.5a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-6h-2v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z" />
   </svg>
 );
 
@@ -18,9 +20,12 @@ export const ExploreIcon = ({ size = 24, color = "#e7e9ea", ...props }) => (
     viewBox="0 0 24 24"
     width={size}
     height={size}
-    fill={color}
+    stroke={color}
+    fill="none"
+    strokeWidth="2"
     {...props}>
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-5l-4 2.5 4-2.5 4 2.5-4-2.5v5l4-2.5-4 2.5z" />
+    <circle cx="12" cy="12" r="10" />
+    <path d="M10 14l5-2.5L10 9v5zm1-8v3m0 7v3m3-7h3M7 12H4" />
   </svg>
 );
 
@@ -34,9 +39,11 @@ export const NotificationsIcon = ({
     viewBox="0 0 24 24"
     width={size}
     height={size}
-    fill={color}
+    stroke={color}
+    fill="none"
+    strokeWidth="2"
     {...props}>
-    <path d="M12 2a7 7 0 00-7 7v5.086l-1.293 1.293a1 1 0 000 1.414V18h16v-.207a1 1 0 000-1.414L19 14.086V9a7 7 0 00-7-7zm0 20a2 2 0 002-2H10a2 2 0 002 2z" />
+    <path d="M18 16v-5a6 6 0 1 0-12 0v5l-2 2v1h16v-1l-2-2zm-6 6a2 2 0 0 0 2-2H10a2 2 0 0 0 2 2z" />
   </svg>
 );
 
@@ -46,9 +53,11 @@ export const MessagesIcon = ({ size = 24, color = "#e7e9ea", ...props }) => (
     viewBox="0 0 24 24"
     width={size}
     height={size}
-    fill={color}
+    stroke={color}
+    fill="none"
+    strokeWidth="2"
     {...props}>
-    <path d="M20 2H4a2 2 0 00-2 2v12a2 2 0 002 2h4l4 4 4-4h4a2 2 0 002-2V4a2 2 0 00-2-2zM6 9h12v2H6V9zm8 4H6v-2h8v2z" />
+    <path d="M21 12a9 9 0 1 1-9-9m0 3.5L7 8l3 5H6l4 5-2.5-1" />
   </svg>
 );
 
@@ -58,9 +67,14 @@ export const CommunitiesIcon = ({ size = 24, color = "#e7e9ea", ...props }) => (
     viewBox="0 0 24 24"
     width={size}
     height={size}
-    fill={color}
+    stroke={color}
+    fill="none"
+    strokeWidth="2"
     {...props}>
-    <path d="M12 4a4 4 0 11-4 4 4 4 0 014-4zm-6 6a2 2 0 10-2 2 2 2 0 002-2zm14 0a2 2 0 10-2 2 2 2 0 002-2zm-7 4c-3.333 0-8 1.667-8 5v1h16v-1c0-3.333-4.667-5-8-5z" />
+    <circle cx="12" cy="8" r="4" />
+    <circle cx="4" cy="12" r="2" />
+    <circle cx="20" cy="12" r="2" />
+    <path d="M4 15a9 9 0 0 1 16 0" />
   </svg>
 );
 
@@ -70,9 +84,12 @@ export const ProfileIcon = ({ size = 24, color = "#e7e9ea", ...props }) => (
     viewBox="0 0 24 24"
     width={size}
     height={size}
-    fill={color}
+    stroke={color}
+    fill="none"
+    strokeWidth="2"
     {...props}>
-    <path d="M12 12a5 5 0 10-5-5 5 5 0 005 5zm0 2c-3.333 0-8 1.667-8 5v1h16v-1c0-3.333-4.667-5-8-5z" />
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4 20a9 9 0 0 1 16 0" />
   </svg>
 );
 
@@ -82,8 +99,11 @@ export const SettingsIcon = ({ size = 24, color = "#e7e9ea", ...props }) => (
     viewBox="0 0 24 24"
     width={size}
     height={size}
-    fill={color}
+    stroke={color}
+    fill="none"
+    strokeWidth="2"
     {...props}>
-    <path d="M12 1a2 2 0 012 2v.806a7.972 7.972 0 013.134 1.81l.655-.655a2 2 0 112.828 2.828l-.655.655A7.972 7.972 0 0120.194 12H21a2 2 0 010 4h-.806a7.972 7.972 0 01-1.81 3.134l.655.655a2 2 0 01-2.828 2.828l-.655-.655A7.972 7.972 0 0112 20.194V21a2 2 0 01-4 0v-.806a7.972 7.972 0 01-3.134-1.81l-.655.655a2 2 0 01-2.828-2.828l.655-.655A7.972 7.972 0 013.806 12H3a2 2 0 010-4h.806a7.972 7.972 0 011.81-3.134l-.655-.655a2 2 0 012.828-2.828l.655.655A7.972 7.972 0 0112 3.806V3a2 2 0 014-2zM12 8a4 4 0 104 4 4 4 0 00-4-4z" />
+    <circle cx="12" cy="12" r="3" />
+    <path d="M12 2v2m0 16v2m10-10h-2M4 12H2m14.07-7.07L16.5 5.5M7.5 18.5l-1.57 1.57M18.5 16.5l1.57-1.57M5.5 7.5L4 6m7 2.92v3.5h3.5" />
   </svg>
 );
