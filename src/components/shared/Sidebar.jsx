@@ -6,20 +6,22 @@ import ButtonUI from "../ui/ButtonUI";
 const Sidebar = () => {
   console.log(sidebarMenu, "....................sI");
   return (
-    <div className="w-[300px] border-r border-gray-500 h-screen">
-      <div className="flex flex-col ">
-        <div className="mt-6 ml-[40px]">
+    <div className="lg:w-80 md:w-24 border-r border-gray-500 h-screen md:block hidden">
+      <div className="flex flex-col items-start lg:mx-14 md:mx-7  justify-around gap-4">
+        <div className="mt-4">
           <LogoIcon />
         </div>
         {sidebarMenu?.map((item, index) => (
           <div
             key={index}
-            className="my-4 px-2 py-2 flex gap-4 ml-[40px] bg-red-500 w-[200px]">
+            className="flex gap-4 hover:bg-gray-100 p-3 rounded-3xl cursor-pointer  ">
             <div>{item.icon}</div>
-            <div>{item.name}</div>
+            <p className="text-xl font-medium md:hidden lg:block">
+              {item.name}
+            </p>
           </div>
         ))}
-        <div className="ml-[40px]">
+        <div className="">
           <ButtonUI label={"Post"} />
         </div>
       </div>
