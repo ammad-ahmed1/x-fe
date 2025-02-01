@@ -14,16 +14,14 @@ const Sidebar = () => {
         {sidebarMenu?.map((item, index) => (
           <div
             key={index}
-            className="flex gap-4 hover:bg-gray-100 p-3 rounded-3xl cursor-pointer  ">
+            className="flex gap-4 cursor-pointer">
             <div>{item.icon}</div>
             <p className="text-xl font-medium md:hidden lg:block">
               {item.name}
             </p>
           </div>
         ))}
-        <div className="">
-          <ButtonUI label={"Post"} />
-        </div>
+        <ButtonUI label={"Post"} />
       </div>
     </div>
   );
