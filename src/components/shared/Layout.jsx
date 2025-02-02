@@ -1,0 +1,31 @@
+// components/Layout.js
+import React from "react";
+import LeftSidebar from "./LeftSidebar";
+import Header from "./Header";
+import RightSidebar from "./RightSidebar";
+import MobileBottomBar from "./MobileBottomBar";
+// import RightSidebar from "./RightSidebar";
+// import Header from "./Header";
+
+const Layout = ({ children, headerContent, rightSidebarContent }) => {
+  return (
+    <div className="flex min-h-screen ">
+      <div className="lg:w-80 md:w-24 border-r border-gray-800 h-screen md:block hidden">
+        <LeftSidebar />
+      </div>
+      <div className="flex-1 flex flex-col">
+        {/* Header (Visible on all screens) */}
+        <Header>{headerContent}</Header>
+        <main className="flex-1 p-4 md:p-6 overflow-y-auto">{children}</main>
+      </div>
+      <div className="lg:w-80 md:w-64 border-l border-gray-800 h-screen md:block hidden">
+        <RightSidebar>{rightSidebarContent}</RightSidebar>
+      </div>
+      <div className="fixed w-full bottom-0 md:hidden">
+        <MobileBottomBar />
+      </div>
+    </div>
+  );
+};
+
+export default Layout;

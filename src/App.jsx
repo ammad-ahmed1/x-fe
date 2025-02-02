@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./App.css";
-import Sidebar from "./components/shared/Sidebar";
+import Layout from "./components/shared/Layout";
 
 function App() {
   return (
     <div className="">
-      <Sidebar />
+      <Layout />
     </div>
   );
 }
