@@ -4,6 +4,7 @@ import LeftSidebar from "./LeftSidebar";
 import Header from "./Header";
 import RightSidebar from "./RightSidebar";
 import MobileBottomBar from "./MobileBottomBar";
+import Post from "../ui/Post";
 // import RightSidebar from "./RightSidebar";
 // import Header from "./Header";
 
@@ -16,7 +17,9 @@ const Layout = ({ children, headerContent, rightSidebarContent }) => {
       <div className="flex-1 flex flex-col">
         {/* Header (Visible on all screens) */}
         <Header>{headerContent}</Header>
-        <main className="flex-1 p-4 md:p-6 overflow-y-auto">{children}</main>
+        <main className="flex-1 p-4 md:p-6 overflow-y-auto">{children}
+          <Post />
+        </main>
       </div>
       <div className="lg:w-80 md:w-64 border-l border-gray-800 h-screen md:block hidden">
         <RightSidebar>{rightSidebarContent}</RightSidebar>
