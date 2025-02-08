@@ -17,7 +17,7 @@ const LeftSidebar = () => {
       {/* Desktop and Medium Screen Sidebar */}
       <nav
         aria-label="Main navigation"
-        className="lg:w-80 md:w-24 border-r border-gray-500 h-screen md:block hidden">
+        className="lg:w-80 md:w-24 border-r border-gray-500 h-screen md:block hidden fixed">
         <div className="flex flex-col items-start lg:mx-14 md:mx-7 justify-around gap-4">
           <div className="mt-4 mx-2">
             <LogoIcon aria-label="App Logo" />
