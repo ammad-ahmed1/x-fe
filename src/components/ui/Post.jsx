@@ -20,19 +20,21 @@ const PostCard = ({ post }) => {
               • {post.post.date}
             </span>
           </div>
-          <p className="mt-2 text-sm">{post.post.content}</p>
+          <div>
+            <p className="mt-2 text-sm">{post.post.content}</p>
+
+            {post.post.image && (
+              <div className=" my-3 ">
+                <img
+                  src={post.post.image}
+                  alt="Tweet image"
+                  className="max-w-full rounded-lg"
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
-
-      {post.post.image && (
-        <div className=" my-3 px-8 md:px-22">
-          <img
-            src={post.post.image}
-            alt="Tweet image"
-            className="max-w-full rounded-lg"
-          />
-        </div>
-      )}
 
       <div className="pl-16 flex space-x-4 text-gray-500">
         <div className="flex items-center">
