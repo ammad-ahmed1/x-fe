@@ -5,7 +5,7 @@ const Header = ({ children }) => {
   return (
     <>
       {/* Header for medium and large screens */}
-      <header className="p-4 shadow-md  border-b border-gray-800 py-8">
+      <header className=" shadow-md  border-b border-gray-800 py-8">
         <div className="max-w-2xl mx-auto flex justify-between items-center">
           {children}
         </div>

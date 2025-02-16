@@ -13,7 +13,7 @@ const PostCard = ({ post }) => {
         <div>
           <div>
             <span className="font-bold">{post.user.name}</span>
-            <span className="text-gray-500 text-sm ml-2">
+            <span class Name="text-gray-500 text-sm ml-2">
               {post.user.username}
             </span>
             <span className="text-gray-500 text-sm ml-2">
@@ -33,10 +33,27 @@ const PostCard = ({ post }) => {
               </div>
             )}
           </div>
+          <div className=" flex justify-between text-gray-500 cursor-pointer">
+            <div className="flex items-center">
+              <MessageCircle size={20} className="mr-2" />
+              <span>{post.engagement.comments}</span>
+            </div>
+            <div className="flex items-center">
+              <Repeat size={20} className="mr-2" />
+              <span>{post.engagement.retweets}</span>
+            </div>
+            <div className="flex items-center">
+              <Heart size={20} className="mr-2" />
+              <span>{post.engagement.likes}</span>
+            </div>
+            <div className="flex items-center">
+              <Send size={20} />
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="pl-16 flex space-x-4 text-gray-500">
+      {/* <div className=" flex space-x-4 text-gray-500">
         <div className="flex items-center">
           <MessageCircle size={20} className="mr-2" />
           <span>{post.engagement.comments}</span>
@@ -52,7 +69,7 @@ const PostCard = ({ post }) => {
         <div className="flex items-center">
           <Send size={20} />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
