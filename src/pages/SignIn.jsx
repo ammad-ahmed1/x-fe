@@ -11,15 +11,32 @@ const SignIn = () => {
         fieldState={userNameOrEmail}
         setFieldState={setUserNameOrEmail}
         // onChange={handleChange}
-        placeholder="Enter your email or username"
-        label="Username or Email"
+        // placeholder="Phone, Email or Username"
+        label="Phone, Email or Username"
         maxChar={50}
         startIcon={<i className="fas fa-user"></i>}
         fullWidth
         size="large"
+        customClass={"w-[250px] border-none outline-none"}
         rounden={false}
       />
-      ;
+
+      <div
+        tabindex="0"
+        class="p-4 border border-gray-300 rounded-lg focus:border-blue-500 focus:bg-blue-100 focus:shadow-lg focus:outline-none">
+        This is a focusable div. Click or tab to focus.
+      </div>
+
+      <div
+        tabindex="0"
+        class="p-4 border border-gray-300 rounded-lg focus:border-blue-500 focus:bg-blue-100 focus:shadow-lg focus:outline-none">
+        This is a focusable div. Click or tab to focus.
+      </div>
+      <div
+        tabindex="0"
+        class="p-4 border border-gray-300 rounded-lg focus:border-blue-500 focus:bg-blue-100 focus:shadow-lg focus:outline-none">
+        This is a focusable div. Click or tab to focus.
+      </div>
     </div>
   );
 };
