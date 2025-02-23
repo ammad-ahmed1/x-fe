@@ -10,20 +10,20 @@ const SignIn = () => {
       <TextField
         fieldState={userNameOrEmail}
         setFieldState={setUserNameOrEmail}
-        // onChange={handleChange}
-        // placeholder="Phone, Email or Username"
+        disabled={false}
+        readOnly={false}
         label="Phone, Email or Username"
-        maxChar={50}
+        // maxChar={50}
         startIcon={<i className="fas fa-user"></i>}
         fullWidth
         size="large"
-        customClass={"w-[250px] border-none outline-none"}
+        className={"w-[250px] border-none outline-none"}
         rounden={false}
       />
 
-      <div
+      {/* <div
         tabindex="0"
-        class="p-4 border border-gray-300 rounded-lg focus:border-blue-500 focus:bg-blue-100 focus:shadow-lg focus:outline-none">
+        class="p-4 border border-gray-300 rounded-lg  focus:shadow-lg focus:outline-none">
         This is a focusable div. Click or tab to focus.
       </div>
 
@@ -36,7 +36,7 @@ const SignIn = () => {
         tabindex="0"
         class="p-4 border border-gray-300 rounded-lg focus:border-blue-500 focus:bg-blue-100 focus:shadow-lg focus:outline-none">
         This is a focusable div. Click or tab to focus.
-      </div>
+      </div> */}
     </div>
   );
 };
