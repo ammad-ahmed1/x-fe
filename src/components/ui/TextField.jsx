@@ -31,6 +31,7 @@ const TextField = ({
 
   return (
     <div
+      style={{ width: '400px', height: '65px' }}
       className="relative p-4 w-fit inline-flex items-center  border border-[rgb(51,54,57)] focus-within:border-blue-500 border p-4 hover:cursor-text"
       onClick={() => {
         inputRef.current.focus();
@@ -42,7 +43,7 @@ const TextField = ({
       </label>
       {startIcon && startIcon}
       <input
-        className={`absolute left-0 ${className} border border-red`}
+        className={`absolute left-0 ${className} border border-red mt-4 ml-2`}
         ref={inputRef}
         onFocusCapture={() => setLabelClass(activeFieldClass)}
         onBlurCapture={() => {
