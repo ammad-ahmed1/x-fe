@@ -28,7 +28,7 @@ const LeftSidebar = () => {
             ))}
           </ul>
           <div className="w-full">
-            <ButtonUI label="Post" />
+            <ButtonUI label="Post" size="large" />
           </div>
         </div>
       </nav>

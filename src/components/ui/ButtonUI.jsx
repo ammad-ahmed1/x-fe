@@ -1,11 +1,29 @@
 import React from "react";
 
-const ButtonUI = ({ label, handleClick, size }) => {
+const ButtonUI = ({
+  label,
+  handleClick,
+  size = "medium",
+  bgColor = "white",
+  textColor = "black",
+}) => {
+  // Define base styles
+  const baseStyles =
+    "font-bold rounded-full transition duration-200 cursor-pointer";
+
+  // Define size-specific styles
+  const sizeStyles = {
+    small: "px-4 py-1 text-sm",
+    medium: "px-8 py-2 text-base",
+    large: "px-20 py-3 text-lg",
+  };
+
+  // Combine base styles with size-specific styles and dynamic colors
+  const buttonStyles = `${baseStyles} ${sizeStyles[size]} bg-${bgColor} text-${textColor} hover:bg-${bgColor}-100`;
+
   return (
     <div>
-      <button
-        className="bg-white hover:bg-gray-100 text-black font-bold px-24 py-4 rounded-4xl transition duration-200 cursor-pointer"
-        onClick={handleClick}>
+      <button className={buttonStyles} onClick={handleClick}>
         {label}
       </button>
     </div>
