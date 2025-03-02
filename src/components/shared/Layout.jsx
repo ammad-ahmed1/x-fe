@@ -7,6 +7,7 @@ import MobileBottomBar from "./MobileBottomBar";
 import Post from "../ui/Post";
 import Homepage from "../../pages/Homepage";
 import SignIn from "../../pages/SignIn";
+import SearchInputUI from "../ui/SearchInputUI";
 
 // import RightSidebar from "./RightSidebar";
 // import Header from "./Header";
@@ -22,12 +23,14 @@ const Layout = ({ children, headerContent, rightSidebarContent }) => {
         <Header>{headerContent}</Header>
         <main className="flex-1 py-2 md:py-4 overflow-y-auto">
           {children}
-          {/* <Homepage /> */}
-          <SignIn />
+          <Homepage />
+          {/* <SignIn /> */}
         </main>
       </div>
-      <div className="lg:w-80 md:w-64 border-l border-gray-800 h-screen md:block hidden">
-        <RightSidebar>{rightSidebarContent}</RightSidebar>
+      <div className="lg:w-80 md:w-64 border-l border-gray-800 h-screen md:block hidden flex justify-center">
+        <RightSidebar>
+          <SearchInputUI />
+        </RightSidebar>
       </div>
       <div className="fixed w-full bottom-0 md:hidden">
         <MobileBottomBar />

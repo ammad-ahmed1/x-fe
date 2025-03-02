@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-const TextField = ({
+const TextFieldUI = ({
   fieldState,
   setFieldState,
   type,
@@ -21,9 +21,14 @@ const TextField = ({
   minChar,
   rounded,
 }) => {
+  const sizeStyles = {
+    sm: { width: "200px", height: "40px" }, // Small size
+    md: { width: "300px", height: "45px" }, // Medium (default)
+    lg: { width: "400px", height: "50px" }, // Large size
+  };
   const inputRef = useRef(null);
-  const activeFieldClass = "text-sm -translate-y-3";
-  const inActiveFieldClass = "text-lg translate-y-0";
+  const activeFieldClass = "text-xs -translate-y-3 ml-1";
+  const inActiveFieldClass = "text-md translate-y-0 ml-2";
   const [labelClass, setLabelClass] = useState(inActiveFieldClass);
   const handleChange = (val) => {
     setFieldState(val);
@@ -31,19 +36,23 @@ const TextField = ({
 
   return (
     <div
-      style={{ width: '400px', height: '65px' }}
-      className="relative p-4 w-fit inline-flex items-center  border border-[rgb(51,54,57)] focus-within:border-blue-500 border p-4 hover:cursor-text"
+      style={sizeStyles[size]}
+      className={`relative p-0 w-fit inline-flex items-center border border-[rgb(51,54,57)] focus-within:border-blue-500 border hover:cursor-text ${
+        rounded && rounded
+      }`}
       onClick={() => {
         inputRef.current.focus();
       }}>
-      <label
-        htmlFor="input-field"
-        className={`transition-all duration-300 ${labelClass}`}>
-        {label && label}
-      </label>
+      {label && (
+        <label
+          htmlFor="input-field"
+          className={`transition-all duration-300 ${labelClass}`}>
+          {label}
+        </label>
+      )}
       {startIcon && startIcon}
       <input
-        className={`absolute left-0 ${className} border border-red mt-4 ml-2`}
+        className={`absolute left-0 ${className} ${label && "mt-4"} ml-2`}
         ref={inputRef}
         onFocusCapture={() => setLabelClass(activeFieldClass)}
         onBlurCapture={() => {
@@ -85,4 +94,4 @@ const TextField = ({
   );
 };
 
-export default TextField;
+export default TextFieldUI;
