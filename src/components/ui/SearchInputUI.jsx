@@ -1,3 +1,8 @@
+// in this component a change will be made when we will integrate the backend.
+// the page state will be handled according to the page coming form backend
+// in response, we will also check if hasmore is true or not so we can stop
+// next page api call when data is ended
+
 import React, { useEffect, useRef, useState } from "react";
 import TextField from "./TextFieldUI";
 import UserCard from "../shared/UserCard";
@@ -30,7 +35,7 @@ const SearchInputUI = () => {
 
     fetch(
       `https://dummyjson.com/user/search?q=${searchQuery}&limit=10&skip=${
-        page - 1
+        (page - 1) * 10
       }`
     )
       .then((response) => response.json())
@@ -59,6 +64,7 @@ const SearchInputUI = () => {
       setUsers([]);
       setProgress(0);
       setLoading(false);
+      setPage(1);
     }
   }, [searchQuery, page]);
   useEffect(() => {
