@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 
 const TextFieldUI = ({
   fieldState,
@@ -21,18 +21,37 @@ const TextFieldUI = ({
   minChar,
   rounded,
 }) => {
-  const sizeStyles = {
-    sm: { width: "200px", height: "40px" }, // Small size
-    md: { width: "300px", height: "45px" }, // Medium (default)
-    lg: { width: "400px", height: "50px" }, // Large size
-  };
+  const sizeStyles = useMemo(
+    () => ({
+      sm: { width: "200px", height: "40px" }, // Small size
+      md: { width: "300px", height: "45px" }, // Medium (default)
+      lg: { width: "400px", height: "50px" }, // Large size
+    }),
+    []
+  );
   const inputRef = useRef(null);
   const activeFieldClass = "text-xs -translate-y-3 ml-1";
   const inActiveFieldClass = "text-md translate-y-0 ml-2";
   const [labelClass, setLabelClass] = useState(inActiveFieldClass);
-  const handleChange = (val) => {
-    setFieldState(val);
-  };
+  const handleChange = useCallback(
+    (val) => {
+      setFieldState(val);
+    },
+    [setFieldState]
+  );
+  const handleFocus = useCallback((e) => {
+    e.target.previousSibling.classList.add("top-2", "text-sm", "text-blue-500");
+  }, []);
+
+  const handleBlur = useCallback((e) => {
+    if (e.target.value === "") {
+      e.target.previousSibling.classList.remove(
+        "top-2",
+        "text-sm",
+        "text-blue-500"
+      );
+    }
+  }, []);
 
   return (
     <div
