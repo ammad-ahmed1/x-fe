@@ -21,11 +21,7 @@ const Layout = ({ children, headerContent, rightSidebarContent }) => {
       <div className="flex-1 flex flex-col">
         {/* Header (Visible on all screens) */}
         <Header>{headerContent}</Header>
-        <main className="flex-1 py-2 md:py-4 overflow-y-auto">
-          {children}
-          <Homepage />
-          {/* <SignIn /> */}
-        </main>
+        <main className="flex-1 py-2 md:py-4 overflow-y-auto">{children}</main>
       </div>
       <div className="lg:w-80 md:w-64 border-l border-gray-800 h-screen md:block hidden flex justify-center">
         <RightSidebar>

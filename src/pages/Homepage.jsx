@@ -1,5 +1,7 @@
 import React from "react";
-import PostCard from "../components/ui/Post";
+import Layout from "../components/shared/Layout";
+import Home from "../components/modules/home/Home";
+import TabsUI from "../components/shared/TabsUI";
 
 const Homepage = () => {
   const posts = [
@@ -44,12 +46,39 @@ const Homepage = () => {
       },
     },
   ];
+  const headerTabs = [
+    {
+      id: 1,
+      name: "For You",
+      route: "/home/for-you", // Route for the "For You" feed
+    },
+    {
+      id: 2,
+      name: "Following",
+      route: "/home/following", // Route for the "Following" feed
+    },
+  ];
+  const tabs = () => {
+    return (
+      <>
+        <TabsUI tabsList={headerTabs} />
+      </>
+    );
+  };
   return (
-    <div>
-      {posts.map((post, index) => (
-        <PostCard key={index} post={post} />
-      ))}
-    </div>
+    <>
+      <Layout
+        headerContent={
+          <div className="flex space-x-4">
+            {headerTabs.map((item) => (
+              <TabsUI tab={item} />
+            ))}
+          </div>
+        }
+        rightSidebarContent={null}>
+        <Home posts={posts} />
+      </Layout>
+    </>
   );
 };
 
