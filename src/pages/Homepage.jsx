@@ -72,7 +72,7 @@ const Homepage = () => {
         {headerTabs.map((item) => (
           <TabsUI
             tab={item}
-            handleClick={handleTabClick}
+            onClick={handleTabClick}
             isActive={dummyParam == item?.value ? true : false}
           />
         ))}

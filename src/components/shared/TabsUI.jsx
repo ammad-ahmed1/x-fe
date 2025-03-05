@@ -14,7 +14,7 @@ const TabsUI = ({ tab, isActive, onClick }) => {
   return (
     <div
       className="w-full px-6 py-4 flex flex-col justify-center items-center hover:bg-[rgba(255,255,255,0.1)] transition duration-200 cursor-pointer relative"
-      onClick={onClick}>
+      onClick={() => onClick(tab)}>
       <span
         ref={labelRef}
         className={`text-center ${
