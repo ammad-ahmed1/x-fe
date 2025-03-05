@@ -13,7 +13,7 @@ const PostCard = ({ post }) => {
         <div>
           <div>
             <span className="font-bold">{post.user.name}</span>
-            <span class Name="text-gray-500 text-sm ml-2">
+            <span className="text-gray-500 text-sm ml-2">
               {post.user.username}
             </span>
             <span className="text-gray-500 text-sm ml-2">

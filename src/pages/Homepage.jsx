@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../components/shared/Layout";
 import Home from "../components/modules/home/Home";
 import TabsUI from "../components/shared/TabsUI";
 
 const Homepage = () => {
+  const [dummyParam, setDummyParam] = useState("for-you");
+
   const posts = [
     {
       user: {
@@ -50,32 +52,36 @@ const Homepage = () => {
     {
       id: 1,
       name: "For You",
-      route: "/home/for-you", // Route for the "For You" feed
+      route: "/home/for-you",
+      value: "for-you",
     },
     {
       id: 2,
       name: "Following",
-      route: "/home/following", // Route for the "Following" feed
+      route: "/home/following",
+      value: "follow",
     },
   ];
-  const tabs = () => {
+
+  const handleTabClick = (tab) => {
+    setDummyParam(tab.value);
+  };
+  const Tabs = () => {
     return (
-      <>
-        <TabsUI tabsList={headerTabs} />
-      </>
+      <div className="w-full flex">
+        {headerTabs.map((item) => (
+          <TabsUI
+            tab={item}
+            handleClick={handleTabClick}
+            isActive={dummyParam == item?.value ? true : false}
+          />
+        ))}
+      </div>
     );
   };
   return (
     <>
-      <Layout
-        headerContent={
-          <div className="flex space-x-4">
-            {headerTabs.map((item) => (
-              <TabsUI tab={item} />
-            ))}
-          </div>
-        }
-        rightSidebarContent={null}>
+      <Layout headerContent={<Tabs />} rightSidebarContent={null}>
         <Home posts={posts} />
       </Layout>
     </>
