@@ -7,10 +7,10 @@ import React, { useEffect, useRef, useState } from "react";
 import TextField from "./TextFieldUI";
 import UserCard from "../shared/UserCard";
 
-const SearchInputUI = () => {
+const SearchInputUI = ({ url, renderItem }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isShowDropdown, setIsShowDropdown] = useState(false);
-  const [users, setUsers] = useState([]);
+  const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -33,15 +33,11 @@ const SearchInputUI = () => {
       });
     }, 300);
 
-    fetch(
-      `https://dummyjson.com/user/search?q=${searchQuery}&limit=10&skip=${
-        (page - 1) * 10
-      }`
-    )
+    fetch(`${url}?q=${searchQuery}&limit=10&skip=${(page - 1) * 10}`)
       .then((response) => response.json())
       .then((data) => {
         setProgress(100);
-        setUsers(data?.users);
+        setData(data?.users);
         setProgress(0);
         setLoading(false);
         setError(null);
@@ -61,7 +57,7 @@ const SearchInputUI = () => {
 
       return () => clearTimeout(delayDebounce);
     } else {
-      setUsers([]);
+      setData([]);
       setProgress(0);
       setLoading(false);
       setPage(1);
@@ -121,9 +117,16 @@ const SearchInputUI = () => {
         {error != null && (
           <p className="mt-3 text-center text-xs text-red-500">{error}</p>
         )}
-        {users?.map((user, index) => (
-          <UserCard user={user} key={user.id} />
+        {data?.map((item, index) => (
+          <React.Fragment key={item.id || index}>
+            {renderItem(item)}
+          </React.Fragment>
         ))}
+        {/* {!hasMore && (
+          <p className="mt-3 text-center text-xs text-gray-500">
+            No more results
+          </p>
+        )} */}
       </div>
     </div>
   );

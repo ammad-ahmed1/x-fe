@@ -25,7 +25,8 @@ const Layout = ({ children, headerContent, rightSidebarContent }) => {
       </div>
       <div className="lg:w-80 md:w-64 border-l border-gray-800 h-screen md:block hidden flex justify-center">
         <RightSidebar>
-          <SearchInputUI />
+          {/* <SearchInputUI /> */}
+          {rightSidebarContent}
         </RightSidebar>
       </div>
       <div className="fixed w-full bottom-0 md:hidden">
