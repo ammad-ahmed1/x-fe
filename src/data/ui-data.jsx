@@ -1,44 +1,58 @@
 import React from "react";
 import {
-  CommunitiesIcon,
-  ExploreIcon,
-  HomeIcon,
-  MessagesIcon,
-  NotificationsIcon,
-  ProfileIcon,
-  SettingsIcon,
-} from "../assets/icons/SidebarIcons";
+  Home,
+  Search,
+  MessageCircle,
+  Bell,
+  Users,
+  User,
+  Settings,
+} from "lucide-react";
 
 export const sidebarMenu = [
-  { name: "Home", icon: <HomeIcon />, route: "/home" },
+  { name: "Home", icon: <Home size={24} />, route: "/home" },
   {
     name: "Explore",
-    icon: React.createElement(ExploreIcon),
+    icon: <Search size={24} />,
     route: "/explore",
   },
   {
     name: "Notifications",
-    icon: React.createElement(NotificationsIcon),
+    icon: <Bell size={24} />,
     route: "/notifications",
   },
   {
     name: "Messages",
-    icon: React.createElement(MessagesIcon),
+    icon: <MessageCircle size={24} />,
     route: "/messages",
   },
   {
     name: "Communities",
-    icon: React.createElement(CommunitiesIcon),
+    icon: <Users size={24} />,
     route: "/communities",
   },
   {
     name: "Profile",
-    icon: React.createElement(ProfileIcon),
+    icon: <User size={24} />,
     route: "/profile",
   },
   {
     name: "Settings and Privacy",
-    icon: React.createElement(SettingsIcon),
+    icon: <Settings size={24} />,
     route: "/settings-and-privacy",
+  },
+];
+export const headerTabs = [
+  {
+    id: 1,
+    name: "For You",
+    route: "/home/for-you",
+    value: "for-you",
+  },
+  {
+    id: 2,
+    name: "Following",
+    route: "/home/following",
+    value: "follow",
   },
 ];
