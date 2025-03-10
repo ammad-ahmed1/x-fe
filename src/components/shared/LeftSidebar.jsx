@@ -5,7 +5,7 @@ import ButtonUI from "../ui/ButtonUI";
 
 // Reusable Menu Item Component
 const MenuItem = ({ item }) => (
-  <li className="flex gap-4 hover:bg-gray-600 p-3 rounded-3xl cursor-pointer my-2 hover:bg-gray-200 dark:hover:bg-gray-700">
+  <li className="inline-flex gap-4 hover:bg-gray-600 p-3 rounded-3xl cursor-pointer my-2 hover:bg-gray-200 dark:hover:bg-gray-700">
     <div aria-hidden="true">{item.icon}</div>
     <p className="text-xl font-medium md:hidden lg:block">{item.name}</p>
   </li>

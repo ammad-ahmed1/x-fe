@@ -41,35 +41,93 @@ export const posts = [
   },
 ];
 // src/data/whatsHappening.js
-export const whatsHappening = [
+export const whatsHappening = {
+  mostTrending: [
+    {
+      id: 1,
+      // category: "Fashion · Trending",
+      title: "Fashion Weeks Womenswear FW25/26",
+      // tweets: "10.2K Tweets",
+      img: "https://pbs.twimg.com/media/GkqJPa1bkAEX4j0?format=jpg&name=120x120", // Image included
+    },
+  ],
+  other: [
+    {
+      id: 2,
+      category: "Technology · Trending",
+      title: "#AIRevolution",
+      tweets: "15.6K Tweets",
+    },
+    {
+      id: 3,
+      category: "Sports · Trending",
+      title: "#WorldCup2023",
+      tweets: "45.2K Tweets",
+    },
+    {
+      id: 4,
+      category: "Politics · Trending",
+      title: "#ClimateAction",
+      tweets: "32.8K Tweets",
+    },
+    {
+      id: 5,
+      category: "Entertainment · Trending",
+      title: "#Oscars2023",
+      tweets: "28.4K Tweets",
+    },
+    // {
+    //   id: 6,
+    //   category: "News · Trending",
+    //   title: "#BreakingNews",
+    //   tweets: "12.3K Tweets",
+    // },
+  ],
+};
+export const profilesList = [
   {
     id: 1,
-    category: "Technology · Trending",
-    title: "#AIRevolution",
-    tweets: "15.6K Tweets",
+    avatar:
+      "https://pbs.twimg.com/profile_images/1683325380441128960/yRsRRjGO_400x400.jpg",
+    firstName: "Elon",
+    lastName: "Musk",
+    username: "elonmusk",
+    bio: "Technoking of Tesla, CEO of SpaceX, and owner of Twitter.",
   },
   {
     id: 2,
-    category: "Sports · Trending",
-    title: "#WorldCup2023",
-    tweets: "45.2K Tweets",
+    avatar:
+      "https://pbs.twimg.com/profile_images/1627277077075886080/0YFgL6y6_400x400.jpg",
+    firstName: "Satya",
+    lastName: "Nadella",
+    username: "satyanadella",
+    bio: "CEO of Microsoft. Lover of technology and cricket.",
   },
   {
     id: 3,
-    category: "Politics · Trending",
-    title: "#ClimateAction",
-    tweets: "32.8K Tweets",
+    avatar:
+      "https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg",
+    firstName: "Tim",
+    lastName: "Cook",
+    username: "tim_cook",
+    bio: "CEO of Apple. Believer in innovation and equality.",
   },
   {
     id: 4,
-    category: "Entertainment · Trending",
-    title: "#Oscars2023",
-    tweets: "28.4K Tweets",
+    avatar:
+      "https://pbs.twimg.com/profile_images/1605297940242669568/qS6b4_4H_400x400.jpg",
+    firstName: "Sundar",
+    lastName: "Pichai",
+    username: "sundarpichai",
+    bio: "CEO of Google and Alphabet. Passionate about technology and education.",
   },
   {
     id: 5,
-    category: "News · Trending",
-    title: "#BreakingNews",
-    tweets: "12.3K Tweets",
+    avatar:
+      "https://pbs.twimg.com/profile_images/1564398871996174336/M-hffw5a_400x400.jpg",
+    firstName: "Bill",
+    lastName: "Gates",
+    username: "BillGates",
+    bio: "Co-chair of the Bill & Melinda Gates Foundation. Passionate about global health and education.",
   },
 ];
