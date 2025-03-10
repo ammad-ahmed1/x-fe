@@ -40,3 +40,36 @@ export const posts = [
     },
   },
 ];
+// src/data/whatsHappening.js
+export const whatsHappening = [
+  {
+    id: 1,
+    category: "Technology · Trending",
+    title: "#AIRevolution",
+    tweets: "15.6K Tweets",
+  },
+  {
+    id: 2,
+    category: "Sports · Trending",
+    title: "#WorldCup2023",
+    tweets: "45.2K Tweets",
+  },
+  {
+    id: 3,
+    category: "Politics · Trending",
+    title: "#ClimateAction",
+    tweets: "32.8K Tweets",
+  },
+  {
+    id: 4,
+    category: "Entertainment · Trending",
+    title: "#Oscars2023",
+    tweets: "28.4K Tweets",
+  },
+  {
+    id: 5,
+    category: "News · Trending",
+    title: "#BreakingNews",
+    tweets: "12.3K Tweets",
+  },
+];
