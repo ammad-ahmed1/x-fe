@@ -7,7 +7,6 @@ import HeaderContent from "../components/modules/home/HeaderContent";
 import ModalUI from "../components/ui/ModalUI";
 
 const Homepage = () => {
-  useState();
   const [isShowModal, setIsShowModal] = useState(false);
   const handleShowModal = () => {
     setIsShowModal(!isShowModal);
@@ -20,8 +19,26 @@ const Homepage = () => {
         rightSidebarContent={<RightSiderContent />}
       >
         <MainContent posts={posts} />
-        <button>Click me</button>
-        {isShowModal && <ModalUI />}
+        <button onClick={() => handleShowModal()}>Click me</button>
+        <ModalUI
+          isOpen={isShowModal}
+          onClose={handleShowModal}
+          header="Create a New Tweet"
+          body={
+            <textarea
+              className="w-full p-2 border rounded"
+              placeholder="What's happening?"
+            />
+          }
+          footer={
+            <button
+              className="px-4 py-2 bg-blue-500 text-white rounded"
+              onClick={() => console.log("Tweet posted!")}
+            >
+              Tweet
+            </button>
+          }
+        />
       </Layout>
     </>
   );
