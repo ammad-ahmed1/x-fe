@@ -5,6 +5,7 @@ import MainContent from "../components/modules/home/MainContent";
 import RightSiderContent from "../components/modules/home/RightSiderContent";
 import HeaderContent from "../components/modules/home/HeaderContent";
 import ModalUI from "../components/ui/ModalUI";
+import DatePickerUI from "../components/ui/DatePickerUI";
 
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -14,6 +15,7 @@ const Homepage = () => {
   return (
     <>
       <button onClick={handleShowModal}> Click me</button>
+      <DatePickerUI />
       <Layout
         headerContent={<HeaderContent />}
         rightSidebarContent={<RightSiderContent />}
