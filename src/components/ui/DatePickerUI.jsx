@@ -3,6 +3,11 @@ import SelectUI from "./SelectUI";
 
 const DatePickerUI = () => {
   const [yearsArr, setYearsArr] = useState([]);
+  const [datesArr, setDatesArr] = useState([]);
+  const [selectedYear, setSelectedYear] = useState({});
+  const [selectedMonth, setSelectedMonth] = useState({});
+  const [selectedDate, setSelectedDate] = useState({});
+
   const monthsArr = [
     { label: "January", value: 1 },
     { label: "February", value: 2 },
@@ -31,18 +36,71 @@ const DatePickerUI = () => {
     setYearsArr(years);
     // return years.reverse();
   };
+  const generateDatesAccordingToMonth = () => {
+    console.log("called the dates function");
+    if (!selectedMonth) return; // Prevents errors if no month is selected
+    console.log("month selected proceeding the dates function");
+    const dates = [];
+    const month = selectedMonth.value;
+    if (month == 2) {
+      for (let i = 1; i <= 29; i++) {
+        dates.push({
+          label: i.toString(),
+          value: i,
+        });
+      }
+      console.log(dates, "....Dates");
+    } else {
+      const daysInMonth = [4, 6, 9, 11].includes(month) ? 30 : 31;
+      for (let i = 1; i <= daysInMonth; i++) {
+        dates.push({
+          label: i.toString(),
+          value: i,
+        });
+      }
+      console.log(dates, "....Dates");
+    }
+    setDatesArr(dates);
+  };
+
   useEffect(() => {
     groupYearsByDecade();
   }, []);
-  console.log(yearsArr);
+  useEffect(() => {
+    if (Object.keys(selectedMonth).length != 0) {
+      console.log(selectedMonth, "select month in date picker");
+      console.log("use effect is running");
+      generateDatesAccordingToMonth();
+    }
+    // if (selectedMonth) generateDatesAccordingToMonth();
+  }, [selectedMonth]);
+
   return (
     <div>
-      {/* month */}
-      <SelectUI data={monthsArr} placeholder="Month" size="sm" />
-
+      month
+      <SelectUI
+        value={selectedMonth}
+        setValue={setSelectedMonth}
+        data={monthsArr}
+        placeholder="Month"
+        size="sm"
+      />
       {/* date */}
+      <SelectUI
+        value={selectedDate}
+        setValue={setSelectedDate}
+        data={datesArr}
+        placeholder="Date"
+        size="sm"
+      />
       {/* year */}
-      <SelectUI data={yearsArr} placeholder="Year" size="sm" />
+      <SelectUI
+        value={selectedYear}
+        setValue={setSelectedYear}
+        data={yearsArr}
+        placeholder="Year"
+        size="sm"
+      />
     </div>
   );
 };
