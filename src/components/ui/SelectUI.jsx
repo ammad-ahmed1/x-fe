@@ -1,33 +1,52 @@
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import TextFieldUI from "./TextFieldUI";
 
-const SelectUI = ({ data }) => {
-  const [selectItem, setSelectItem] = useState(null);
+const SelectUI = ({ data, placeholder, size }) => {
+  const sizeStyles = useMemo(
+    () => ({
+      sm: { width: "200px", height: "300px" }, // Small size
+      md: { width: "300px", height: "300px" }, // Medium (default)
+      lg: { width: "400px", height: "300px" }, // Large size
+    }),
+    []
+  );
+  const [selectItem, setSelectItem] = useState({});
   const [isShowDropdown, setIsShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
   const renderItems = (item) => {
-    return <div onClick={() => setSelectItem(item)}>{item}</div>; // not selecting the item
+    return (
+      <div
+        className="cursor-pointer"
+        onMouseDown={(e) => {
+          e.stopPropagation();
+          console.log(item);
+          setSelectItem(item);
+        }}
+      >
+        {item.label}
+      </div>
+    ); // not selecting the item
   };
   console.log(selectItem);
 
   const handleShowDropdown = () => {
-    setIsShowDropdown(!isShowDropdown);
+    setIsShowDropdown(true);
   };
-  const handleSelect = () => {
-    console.log("select");
+  const handleBlur = (event) => {
+    if (!dropdownRef.current.contains(event.relatedTarget)) {
+      setIsShowDropdown(false);
+    }
   };
+
   return (
-    <div
-      onFocusCapture={() => handleShowDropdown()}
-      onBlurCapture={() => handleShowDropdown()}
-    >
+    <div onFocusCapture={() => handleShowDropdown()} onBlurCapture={handleBlur}>
       <TextFieldUI
-        fieldState={selectItem}
+        fieldState={selectItem.label}
         setFieldState={setSelectItem}
-        placeholder="Select UI"
+        placeholder={placeholder}
         fullWidth
-        size="md"
+        size={size}
         className={"border-none outline-none"}
       />
       <div
