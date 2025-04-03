@@ -76,8 +76,8 @@ const DatePickerUI = () => {
   }, [selectedMonth]);
 
   return (
-    <div>
-      month
+    <div className="flex gap-2">
+      {/* month */}
       <SelectUI
         value={selectedMonth}
         setValue={setSelectedMonth}
