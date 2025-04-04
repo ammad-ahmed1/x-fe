@@ -15,11 +15,10 @@ const Homepage = () => {
   return (
     <>
       <button onClick={handleShowModal}> Click me</button>
-      <DatePickerUI />
+      {/* <DatePickerUI /> */}
       <Layout
         headerContent={<HeaderContent />}
-        rightSidebarContent={<RightSiderContent />}
-      >
+        rightSidebarContent={<RightSiderContent />}>
         <MainContent posts={posts} />
         <button onClick={() => handleShowModal()}>Click me</button>
         <ModalUI
@@ -35,8 +34,7 @@ const Homepage = () => {
           footer={
             <button
               className="px-4 py-2 bg-blue-500 text-white rounded"
-              onClick={() => console.log("Tweet posted!")}
-            >
+              onClick={() => console.log("Tweet posted!")}>
               Tweet
             </button>
           }

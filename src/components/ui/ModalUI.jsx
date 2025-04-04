@@ -24,14 +24,12 @@ const ModalUI = ({
   return (
     <div
       className="w-screen h-screen fixed inset-0  bg-black/50 z-50 flex justify-center items-center  "
-      onClick={handleOverlayClick}
-    >
+      onClick={handleOverlayClick}>
       <div
         className={`modal-container w-full h-full flex justify-center items-center ${
           size === "fullscreen" ? "w-full h-full" : "w-3/4 max-w-2xl mx-auto"
-        }`}
-      >
-        <div className="w-[450px] h-[375px] bg-black rounded-2xl relative p-4">
+        }`}>
+        <div className="w-[100%] bg-black rounded-2xl relative p-4">
           {/* Header */}
           <div className="modal-header flex w-full justify-between items-center">
             <div>
