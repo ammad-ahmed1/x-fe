@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import ButtonUI from "../components/ui/ButtonUI";
 import TextFieldUI from "../components/ui/TextFieldUI";
 import SearchInputUI from "../components/ui/SearchInputUI";
-import { LogoSVG } from "../../public/SVGs";
+import { GoogleSVG, LogoSVG } from "../../public/SVGs";
 import DividerUI from "../components/ui/DividerUI";
 import AuthFooter from "../components/modules/auth/AuthFooter";
 
 const SignIn = () => {
   const [userNameOrEmail, setUserNameOrEmail] = useState("");
-
+  const isLoggedIn = true;
+  const user = {
+    userName: "Ammad Ahmed",
+    email: "ammad@example.com",
+    avatar: "A",
+    provider: "google",
+  };
   return (
     <>
       <div className="min-h-screen w-[100%] flex flex-col  lg:flex-row">
@@ -32,11 +38,33 @@ const SignIn = () => {
           </h1>
           <div className="flex flex-col w-full justify-center lg:justify-start items-center lg:items-start  gap-2">
             <ButtonUI
-              label={"Sign in as Ammad"}
               size="x-large"
-              bgColor={"white"}
+              bgColor="white"
               textColor="black"
-            />
+              // handleClick={handleClick}
+            >
+              <div className="flex items-center justify-between w-full px-4">
+                {isLoggedIn ? (
+                  <>
+                    <div className="flex items-center">
+                      <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center mr-2">
+                        <span className="text-white text-xs font-bold">
+                          {user?.avatar}
+                        </span>
+                      </div>
+                      <span>Sign in as {user?.userName.split(" ")[0]}</span>
+                    </div>
+                    <GoogleSVG className="w-5 h-5" />
+                  </>
+                ) : (
+                  <>
+                    <GoogleSVG className="w-5 h-5" />
+                    <span>Sign up with Google</span>
+                    <div className="w-5 h-5" />
+                  </>
+                )}
+              </div>
+            </ButtonUI>
             <ButtonUI
               label={"Sign in as Ammad"}
               size="x-large"
