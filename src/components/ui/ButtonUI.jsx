@@ -7,6 +7,7 @@ const ButtonUI = ({
   size = "medium",
   bgColor = "white",
   textColor = "black",
+  externalClass,
 }) => {
   // Define base styles
   const baseStyles =
@@ -20,7 +21,7 @@ const ButtonUI = ({
   };
 
   // Combine base styles with size-specific styles and dynamic colors
-  const buttonStyles = `${baseStyles} ${sizeStyles[size]} bg-${bgColor} text-${textColor} hover:bg-${bgColor}-100`;
+  const buttonStyles = `${baseStyles} ${sizeStyles[size]} bg-${bgColor} text-${textColor} hover:bg-${bgColor}-100 ${externalClass}`;
 
   return (
     <div>
