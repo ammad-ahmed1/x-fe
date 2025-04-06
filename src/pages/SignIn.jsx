@@ -7,12 +7,17 @@ import DividerUI from "../components/ui/DividerUI";
 import AuthFooter from "../components/modules/auth/AuthFooter";
 import ModalUI from "../components/ui/ModalUI";
 import EmailSignUpForm from "../components/modules/auth/EmailSignUpForm";
+import EmailSignInForm from "../components/modules/auth/EmailSignInForm";
 
 const SignIn = () => {
-  const [isSignupModalOpen, setIsSignUpModalOpen] = useState(true);
-  const [isSigninModalOpen, setIsSigninModalOpen] = useState(false);
+  const [isSignupModalOpen, setIsSignUpModalOpen] = useState(false);
+  const [isSigninModalOpen, setIsSigninModalOpen] = useState(true);
+
   const handleShowSignupModal = () => {
     setIsSignUpModalOpen(!isSignupModalOpen);
+  };
+  const handleShowSignInModal = () => {
+    setIsSigninModalOpen(!isSigninModalOpen);
   };
   const isLoggedIn = true;
   const user = {
@@ -129,19 +134,21 @@ const SignIn = () => {
         </div>
       </div>
       <AuthFooter />
+      {/* sign up modal */}
       <ModalUI
         isOpen={isSignupModalOpen}
         onClose={handleShowSignupModal}
         size="large"
-        title={"Create your account"}
-        footer={
-          <button
-            className="px-4 py-2 bg-blue-500 text-white rounded"
-            onClick={() => console.log("Tweet posted!")}>
-            Tweet
-          </button>
-        }>
+        title={"Create your account"}>
         <EmailSignUpForm />
+      </ModalUI>
+      {/* sign in modal */}
+      <ModalUI
+        isOpen={isSigninModalOpen}
+        onClose={handleShowSignInModal}
+        size="large"
+        title={"Sign in to X"}>
+        <EmailSignInForm />
       </ModalUI>
     </>
   );
