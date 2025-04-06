@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import ButtonUI from "../components/ui/ButtonUI";
 import TextFieldUI from "../components/ui/TextFieldUI";
 import SearchInputUI from "../components/ui/SearchInputUI";
-import { GoogleSVG, LogoSVG } from "../../public/SVGs";
+import { AppleSVG, GoogleSVG, LogoSVG } from "../../public/SVGs";
 import DividerUI from "../components/ui/DividerUI";
 import AuthFooter from "../components/modules/auth/AuthFooter";
 
 const SignIn = () => {
   const [userNameOrEmail, setUserNameOrEmail] = useState("");
-  const isLoggedIn = true;
+  const isLoggedIn = false;
   const user = {
     userName: "Ammad Ahmed",
     email: "ammad@example.com",
@@ -66,9 +66,14 @@ const SignIn = () => {
               </div>
             </ButtonUI>
             <ButtonUI
-              label={"Sign in as Ammad"}
+              label={
+                <span className="flex items-center justify-center gap-2">
+                  <AppleSVG className="w-5 h-5" />
+                  Sign in with Apple
+                </span>
+              }
               size="x-large"
-              bgColor={"white"}
+              bgColor="white"
               textColor="black"
             />
             <div className="w-[250px] lg:w-[300px]">

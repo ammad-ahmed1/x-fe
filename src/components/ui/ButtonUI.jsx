@@ -54,7 +54,7 @@ const ButtonUI = ({
           ${getColorClasses()}
         `}
         onClick={handleClick}>
-        {label}
+        {children || label}
       </button>
     </div>
   );
