@@ -46,21 +46,11 @@ const ButtonUI = ({
   };
 
   // Combine base styles with size-specific styles and dynamic colors
-  const buttonStyles = `${baseStyles} ${
-    sizeStyles[size]
-  } bg-${bgColor} text-${textColor} hover:bg-${bgColor}-100 ${
-    externalClass && externalClass
-  }`;
+  const buttonStyles = `${baseStyles} ${sizeStyles[size]} bg-${bgColor} text-${textColor} hover:bg-${bgColor}-100 ${externalClass}`;
 
   return (
     <div>
-      <button
-        className={`
-          font-bold rounded-full transition duration-200 cursor-pointer
-          ${getSizeClasses()} 
-          ${getColorClasses()}
-        `}
-        onClick={handleClick}>
+      <button className={buttonStyles} onClick={handleClick}>
         {children || label}
       </button>
     </div>
