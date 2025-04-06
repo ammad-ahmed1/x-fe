@@ -7,6 +7,7 @@ import HeaderContent from "../components/modules/home/HeaderContent";
 import ModalUI from "../components/ui/ModalUI";
 import DatePickerUI from "../components/ui/DatePickerUI";
 import TextFieldUI from "../components/ui/TextFieldUI";
+import ButtonUI from "../components/ui/ButtonUI";
 
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -76,6 +77,15 @@ const Homepage = () => {
               type="text"
               placeholder="Name"
             />
+            <div className="my-8">
+              <ButtonUI
+                label={"Next"}
+                size="x-large"
+                bgColor={"gray"}
+                textColor="black"
+                externalClass="h-[50px] w-[450px] bg-gray-500 text-black"
+              />
+            </div>
           </div>
         </ModalUI>
       </Layout>
