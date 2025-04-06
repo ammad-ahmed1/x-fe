@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import TextFieldUI from "../../ui/TextFieldUI";
 import ModalUI from "../../ui/ModalUI";
 import ButtonUI from "../../ui/ButtonUI";
+import DatePickerUI from "../../ui/DatePickerUI";
 
 const EmailSignUpForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [dateState, setDateState] = useState(null);
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(dateState);
     console.log("Form submitted!");
   };
   return (
@@ -59,6 +62,7 @@ const EmailSignUpForm = () => {
               this account is for a business, a pet, or something else.
             </p>
           </div>
+          <DatePickerUI setDateState={setDateState} dateFormat="mm/dd/yy" />
           <div className="my-8 mx-auto flex justify center">
             <ButtonUI
               label={"Next"}
