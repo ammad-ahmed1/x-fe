@@ -11,13 +11,15 @@ import TextFieldUI from "../components/ui/TextFieldUI";
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [name, setName] = useState("");
+  const [dateState, setDateState] = useState(null);
   const handleShowModal = () => {
     setIsShowModal(!isShowModal);
   };
+  console.log(dateState, "................date");
   return (
     <>
       <button onClick={handleShowModal}> Click me</button>
-      <DatePickerUI />
+      <DatePickerUI setDateState={setDateState} dateFormat="mm/dd/yy" />
       <Layout
         headerContent={<HeaderContent />}
         rightSidebarContent={<RightSiderContent />}>

@@ -26,7 +26,7 @@ const ModalUI = ({
     // overlay div
     // bg-black/50
     <div
-      className="w-[100%] h-screen fixed inset-0  bg-white/50 z-50 flex justify-center items-center  "
+      className="w-[100%] h-screen fixed inset-0  bg-[rgba(91,112,131,0.4)] z-50 flex justify-center items-center  "
       onClick={handleOverlayClick}>
       {/* modal container */}
       <div
