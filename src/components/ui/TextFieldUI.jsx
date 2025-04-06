@@ -23,6 +23,7 @@ const TextFieldUI = ({
 }) => {
   const sizeStyles = useMemo(
     () => ({
+      xs: { width: "150px", height: "50px" },
       sm: { width: "200px", height: "40px" }, // Small size
       md: { width: "300px", height: "45px" }, // Medium (default)
       lg: { width: "400px", height: "50px" }, // Large size

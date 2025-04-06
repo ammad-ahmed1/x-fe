@@ -20,7 +20,7 @@ const Homepage = () => {
   return (
     <>
       <button onClick={handleShowModal}> Click me</button>
-      <DatePickerUI setDateState={setDateState} dateFormat="mm/dd/yy" />
+
       <Layout
         headerContent={<HeaderContent />}
         rightSidebarContent={<RightSiderContent />}>
@@ -85,6 +85,7 @@ const Homepage = () => {
                 textColor="black"
                 externalClass="h-[50px] w-[450px] bg-gray-500 text-black"
               />
+              <DatePickerUI setDateState={setDateState} dateFormat="mm/dd/yy" />
             </div>
           </div>
         </ModalUI>
