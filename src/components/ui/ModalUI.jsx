@@ -26,15 +26,6 @@ const ModalUI = ({
     // overlay div
     // bg-black/50
     <div
-<<<<<<< HEAD
-      className="w-screen h-screen fixed inset-0  bg-black/50 z-50 flex justify-center items-center  "
-      onClick={handleOverlayClick}>
-      <div
-        className={`modal-container w-full h-full flex justify-center items-center ${
-          size === "fullscreen" ? "w-full h-full" : "w-3/4 max-w-2xl mx-auto"
-        }`}>
-        <div className="w-[100%] bg-black rounded-2xl relative p-4">
-=======
       className="w-[100%] h-screen fixed inset-0  bg-white/50 z-50 flex justify-center items-center  "
       onClick={handleOverlayClick}>
       {/* modal container */}
@@ -47,7 +38,6 @@ const ModalUI = ({
           className={`bg-black rounded-2xl relative p-4 ${
             size == "large" ? "w-[60%] h-full" : "w-3/4 max-w-2xl mx-auto"
           }`}>
->>>>>>> 6cb7bd90ab2fcda33f1f700f8f7f4ae4e4bf6957
           {/* Header */}
           <div className="modal-header flex w-full justify-between items-center">
             <div>

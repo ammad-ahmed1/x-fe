@@ -6,10 +6,14 @@ import { AppleSVG, GoogleSVG, LogoSVG } from "../../public/SVGs";
 import DividerUI from "../components/ui/DividerUI";
 import AuthFooter from "../components/modules/auth/AuthFooter";
 import ModalUI from "../components/ui/ModalUI";
+import EmailSignUpForm from "../components/modules/auth/EmailSignUpForm";
 
 const SignIn = () => {
   const [isSignupModalOpen, setIsSignUpModalOpen] = useState(true);
   const [isSigninModalOpen, setIsSigninModalOpen] = useState(false);
+  const handleShowSignupModal = () => {
+    setIsSignUpModalOpen(!isSignupModalOpen);
+  };
   const isLoggedIn = true;
   const user = {
     userName: "Ammad Ahmed",
@@ -125,8 +129,19 @@ const SignIn = () => {
         </div>
       </div>
       <AuthFooter />
-      <ModalUI isOpen={isSignupModalOpen}>
-        <h1 className="text-3xl font-bold">Create your account</h1>
+      <ModalUI
+        isOpen={isSignupModalOpen}
+        onClose={handleShowSignupModal}
+        size="large"
+        title={"Create your account"}
+        footer={
+          <button
+            className="px-4 py-2 bg-blue-500 text-white rounded"
+            onClick={() => console.log("Tweet posted!")}>
+            Tweet
+          </button>
+        }>
+        <EmailSignUpForm />
       </ModalUI>
     </>
   );
