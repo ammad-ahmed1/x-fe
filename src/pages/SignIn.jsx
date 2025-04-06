@@ -5,10 +5,12 @@ import SearchInputUI from "../components/ui/SearchInputUI";
 import { AppleSVG, GoogleSVG, LogoSVG } from "../../public/SVGs";
 import DividerUI from "../components/ui/DividerUI";
 import AuthFooter from "../components/modules/auth/AuthFooter";
+import ModalUI from "../components/ui/ModalUI";
 
 const SignIn = () => {
-  const [userNameOrEmail, setUserNameOrEmail] = useState("");
-  const isLoggedIn = false;
+  const [isSignupModalOpen, setIsSignUpModalOpen] = useState(true);
+  const [isSigninModalOpen, setIsSigninModalOpen] = useState(false);
+  const isLoggedIn = true;
   const user = {
     userName: "Ammad Ahmed",
     email: "ammad@example.com",
@@ -123,6 +125,9 @@ const SignIn = () => {
         </div>
       </div>
       <AuthFooter />
+      <ModalUI isOpen={isSignupModalOpen}>
+        <h1 className="text-3xl font-bold">Create your account</h1>
+      </ModalUI>
     </>
   );
 };
