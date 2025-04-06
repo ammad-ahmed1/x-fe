@@ -47,7 +47,6 @@ const ButtonUI = ({
 
   return (
     <div>
-<<<<<<< HEAD
       <button
         className={`
           font-bold rounded-full transition duration-200 cursor-pointer
@@ -56,10 +55,6 @@ const ButtonUI = ({
         `}
         onClick={handleClick}>
         {label}
-=======
-      <button className={buttonStyles} onClick={handleClick}>
-        {children || label}
->>>>>>> 74561f0bf36eca2903b47c6c00a3ec50cd24bfbc
       </button>
     </div>
   );
