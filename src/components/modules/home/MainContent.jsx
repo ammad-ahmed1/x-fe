@@ -1,7 +1,7 @@
 import React from "react";
 import PostCard from "../../ui/Post";
 
-const Home = ({ posts }) => {
+const MainContent = ({ posts }) => {
   return (
     <>
       {posts.map((post, index) => (
@@ -11,4 +11,4 @@ const Home = ({ posts }) => {
   );
 };
 
-export default Home;
+export default MainContent;

@@ -5,7 +5,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import TextField from "./TextFieldUI";
-import UserCard from "../shared/UserCard";
+import UserCard from "./ProfileItemUI";
 
 const SearchInputUI = ({ url, renderItem }) => {
   const [searchQuery, setSearchQuery] = useState("");

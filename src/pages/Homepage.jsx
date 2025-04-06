@@ -1,43 +1,46 @@
 import React, { useState } from "react";
 import Layout from "../components/shared/Layout";
-import Home from "../components/modules/home/Home";
-import TabsUI from "../components/shared/TabsUI";
-import SearchInputUI from "../components/ui/SearchInputUI";
-import UserCard from "../components/shared/UserCard";
-import { headerTabs } from "../data/ui-data";
-import { posts } from "../data/users-data";
+import { posts, profilesList, whatsHappening } from "../data/users-data";
+import MainContent from "../components/modules/home/MainContent";
+import RightSiderContent from "../components/modules/home/RightSiderContent";
+import HeaderContent from "../components/modules/home/HeaderContent";
+import ModalUI from "../components/ui/ModalUI";
+import DatePickerUI from "../components/ui/DatePickerUI";
 
 const Homepage = () => {
-  const [dummyParam, setDummyParam] = useState("for-you");
-  const searchUsersUrl = "https://dummyjson.com/user/search";
-
-  const handleTabClick = (tab) => {
-    setDummyParam(tab.value);
-  };
-  const Tabs = () => {
-    return (
-      <div className="w-full flex">
-        {headerTabs.map((item) => (
-          <TabsUI
-            tab={item}
-            onClick={handleTabClick}
-            isActive={dummyParam == item?.value ? true : false}
-          />
-        ))}
-      </div>
-    );
+  const [isShowModal, setIsShowModal] = useState(false);
+  const handleShowModal = () => {
+    setIsShowModal(!isShowModal);
   };
   return (
     <>
+      <button onClick={handleShowModal}> Click me</button>
+      <DatePickerUI />
       <Layout
-        headerContent={<Tabs />}
-        rightSidebarContent={
-          <SearchInputUI
-            url={searchUsersUrl}
-            renderItem={(user) => <UserCard user={user} />}
-          />
-        }>
-        <Home posts={posts} />
+        headerContent={<HeaderContent />}
+        rightSidebarContent={<RightSiderContent />}
+      >
+        <MainContent posts={posts} />
+        <button onClick={() => handleShowModal()}>Click me</button>
+        <ModalUI
+          isOpen={isShowModal}
+          onClose={handleShowModal}
+          header="Create a New Tweet"
+          body={
+            <textarea
+              className="w-full p-2 border rounded"
+              placeholder="What's happening?"
+            />
+          }
+          footer={
+            <button
+              className="px-4 py-2 bg-blue-500 text-white rounded"
+              onClick={() => console.log("Tweet posted!")}
+            >
+              Tweet
+            </button>
+          }
+        />
       </Layout>
     </>
   );

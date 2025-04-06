@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserCard = ({ user }) => {
+const ProfileItemUI = ({ user, showFollowBtn }) => {
   const fallbackAvatar = "/imgs/user-placeholder.png";
   return (
     <div className="flex items-center justify-between p-4 cursor-pointer ">
@@ -18,11 +18,13 @@ const UserCard = ({ user }) => {
           <p className="text-sm text-gray-600 mt-1">{user?.bio}</p>
         </div>
       </div>
-      {/* <button className="px-4 py-2 text-sm font-semibold text-white bg-black rounded-full hover:bg-gray-800 transition-colors duration-200">
-        Follow
-      </button> */}
+      {showFollowBtn && (
+        <button className="px-4 py-2 text-sm font-semibold text-white bg-black rounded-full hover:bg-gray-800 transition-colors duration-200">
+          Follow
+        </button>
+      )}
     </div>
   );
 };
 
-export default UserCard;
+export default ProfileItemUI;
