@@ -109,7 +109,7 @@ const DatePickerUI = ({ dateState, setDateState, dateFormat }) => {
         setValue={(selected) => handleSelectChange("month", selected?.value)}
         data={monthsArr}
         label="Month"
-        size="sm"
+        size="xs"
       />
       {/* day */}
       <SelectUI
@@ -117,7 +117,7 @@ const DatePickerUI = ({ dateState, setDateState, dateFormat }) => {
         setValue={(selected) => handleSelectChange("day", selected?.value)}
         data={datesArr}
         label="Day"
-        size="sm"
+        size="xs"
         disabled={!date.month}
       />
       {/* year */}
@@ -126,7 +126,7 @@ const DatePickerUI = ({ dateState, setDateState, dateFormat }) => {
         setValue={(selected) => handleSelectChange("year", selected?.value)}
         data={yearsArr}
         label="Year"
-        size="sm"
+        size="xs"
       />
     </div>
   );

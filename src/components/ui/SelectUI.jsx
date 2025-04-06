@@ -12,6 +12,7 @@ const SelectUI = ({
   endIcon,
 }) => {
   const sizeStyles = {
+    xs: { width: "200px", height: "300px" },
     sm: { width: "200px", height: "300px" }, // Small size
     md: { width: "300px", height: "300px" }, // Medium (default)
     lg: { width: "400px", height: "300px" }, // Large size
