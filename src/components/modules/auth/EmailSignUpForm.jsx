@@ -59,13 +59,15 @@ const EmailSignUpForm = () => {
               this account is for a business, a pet, or something else.
             </p>
           </div>
-          <ButtonUI
-            label={"Next"}
-            size="x-large"
-            bgColor={"gray"}
-            textColor="black"
-            externalClass="h-[50px] w-[450px] bg-gray-500 text-black"
-          />
+          <div className="my-8 mx-auto flex justify center">
+            <ButtonUI
+              label={"Next"}
+              // size="x-large"
+              bgColor={"gray"}
+              textColor="black"
+              externalClass="h-[50px] w-[450px] bg-gray-500 text-black"
+            />
+          </div>
         </div>
       </form>
     </div>
