@@ -64,6 +64,7 @@ const EmailSignUpForm = () => {
             size="x-large"
             bgColor={"gray"}
             textColor="black"
+            externalClass="h-[50px] w-[450px] bg-gray-500 text-black"
           />
         </div>
       </form>

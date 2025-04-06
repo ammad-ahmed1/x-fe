@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import SelectUI from "./SelectUI";
 
-const DatePickerUI = () => {
+const DatePickerUI = ({ dateState, setDateState, dateFormat }) => {
   const [yearsArr, setYearsArr] = useState([]);
   const [datesArr, setDatesArr] = useState([]);
-  const [selectedYear, setSelectedYear] = useState({});
-  const [selectedMonth, setSelectedMonth] = useState({});
-  const [selectedDate, setSelectedDate] = useState({});
+
+  const [date, setDate] = useState({
+    month: null,
+    day: null,
+    year: null,
+  });
 
   const monthsArr = [
     { label: "January", value: 1 },
@@ -37,11 +40,9 @@ const DatePickerUI = () => {
     // return years.reverse();
   };
   const generateDatesAccordingToMonth = () => {
-    console.log("called the dates function");
-    if (!selectedMonth) return; // Prevents errors if no month is selected
-    console.log("month selected proceeding the dates function");
+    if (!date?.month) return; // Prevents errors if no month is selected
     const dates = [];
-    const month = selectedMonth.value;
+    const month = date.month;
     if (month == 2) {
       for (let i = 1; i <= 29; i++) {
         dates.push({
@@ -49,7 +50,6 @@ const DatePickerUI = () => {
           value: i,
         });
       }
-      console.log(dates, "....Dates");
     } else {
       const daysInMonth = [4, 6, 9, 11].includes(month) ? 30 : 31;
       for (let i = 1; i <= daysInMonth; i++) {
@@ -58,47 +58,74 @@ const DatePickerUI = () => {
           value: i,
         });
       }
-      console.log(dates, "....Dates");
     }
     setDatesArr(dates);
+  };
+
+  const handleSelectChange = (type, selected) => {
+    setDate((prev) => ({
+      ...prev,
+      [type]: selected,
+    }));
+  };
+
+  const formatDate = () => {
+    // Return empty string if any date part is missing
+    if (!date?.day || !date?.month || !date?.year) return "";
+
+    if (dateFormat === "dd/mm/yyyy") {
+      setDateState(`${date?.day}/${date?.month}/${date?.year}`);
+    } else if (dateFormat === "mm/dd/yyyy") {
+      setDateState(`${date?.month}/${date?.day}/${date?.year}`);
+    } else if (dateFormat === "yyyy/mm/dd") {
+      setDateState(`${date?.year}/${date?.month}/${date?.day}`);
+    }
+
+    // Default fallback
+    setDateState(`${date?.day}/${date?.month}/${date?.year}`);
   };
 
   useEffect(() => {
     groupYearsByDecade();
   }, []);
   useEffect(() => {
-    if (Object.keys(selectedMonth).length != 0) {
-      console.log(selectedMonth, "select month in date picker");
-      console.log("use effect is running");
+    if (date?.month) {
       generateDatesAccordingToMonth();
     }
     // if (selectedMonth) generateDatesAccordingToMonth();
-  }, [selectedMonth]);
+  }, [date?.month]);
 
+  useEffect(() => {
+    if (date?.month && date?.day && date?.year) {
+      console.log("run the formate date functions");
+      formatDate();
+    }
+  }, [date]);
   return (
     <div className="flex gap-2">
       {/* month */}
       <SelectUI
-        value={selectedMonth}
-        setValue={setSelectedMonth}
+        value={date.month}
+        setValue={(selected) => handleSelectChange("month", selected?.value)}
         data={monthsArr}
-        placeholder="Month"
+        label="Month"
         size="sm"
       />
-      {/* date */}
+      {/* day */}
       <SelectUI
-        value={selectedDate}
-        setValue={setSelectedDate}
+        value={date.day}
+        setValue={(selected) => handleSelectChange("day", selected?.value)}
         data={datesArr}
-        placeholder="Date"
+        label="Day"
         size="sm"
+        disabled={!date.month}
       />
       {/* year */}
       <SelectUI
-        value={selectedYear}
-        setValue={setSelectedYear}
+        value={date.year}
+        setValue={(selected) => handleSelectChange("year", selected?.value)}
         data={yearsArr}
-        placeholder="Year"
+        label="Year"
         size="sm"
       />
     </div>

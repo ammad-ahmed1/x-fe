@@ -1,7 +1,16 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import TextFieldUI from "./TextFieldUI";
 
-const SelectUI = ({ data, value, setValue, placeholder, size }) => {
+const SelectUI = ({
+  data,
+  value,
+  setValue,
+  placeholder,
+  label,
+  size,
+  disabled,
+  endIcon,
+}) => {
   const sizeStyles = {
     sm: { width: "200px", height: "300px" }, // Small size
     md: { width: "300px", height: "300px" }, // Medium (default)
@@ -20,15 +29,14 @@ const SelectUI = ({ data, value, setValue, placeholder, size }) => {
           console.log(item);
           // setSelectItem(item);
           setValue(item);
-        }}
-      >
+        }}>
         {item.label}
       </div>
     ); // not selecting the item
   };
 
   const handleShowDropdown = () => {
-    setIsShowDropdown(true);
+    if (!disabled) setIsShowDropdown(true);
   };
   const handleBlur = (event) => {
     if (!dropdownRef.current.contains(event.relatedTarget)) {
@@ -41,19 +49,21 @@ const SelectUI = ({ data, value, setValue, placeholder, size }) => {
   return (
     <div onFocusCapture={() => handleShowDropdown()} onBlurCapture={handleBlur}>
       <TextFieldUI
-        fieldState={value?.label}
+        fieldState={value?.label || value}
         // setFieldState={setSelectItem}
-        placeholder={placeholder}
+        // placeholder={placeholder}
+        label={label}
         fullWidth
         size={size}
+        disabled={disabled}
         className={"border-none outline-none"}
       />
+
       <div
         ref={dropdownRef}
         className={`h-[200px] w-[300px] overflow-hidden rounded-lg bg-black border border-[rgb(51,54,57)] shadow-[0_0_15px_rgba(255,255,255,0.1)] overflow-y-auto ${
           !isShowDropdown && "hidden"
-        }`}
-      >
+        }`}>
         {data?.map((item, index) => (
           <React.Fragment key={item.id || index}>
             {renderItems(item)}

@@ -5,9 +5,9 @@ const ButtonUI = ({
   label,
   handleClick,
   size = "medium",
-  bgColor = "black",
-  textColor = "white",
-  borderColor = "white",
+  bgColor = "white",
+  textColor = "black",
+  externalClass,
 }) => {
   // Size classes
   const getSizeClasses = () => {
@@ -44,6 +44,13 @@ const ButtonUI = ({
     };
     return colorMap[bgColor] || colorMap.black;
   };
+
+  // Combine base styles with size-specific styles and dynamic colors
+  const buttonStyles = `${baseStyles} ${
+    sizeStyles[size]
+  } bg-${bgColor} text-${textColor} hover:bg-${bgColor}-100 ${
+    externalClass && externalClass
+  }`;
 
   return (
     <div>

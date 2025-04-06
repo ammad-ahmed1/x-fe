@@ -32,7 +32,8 @@ const TextFieldUI = ({
   );
   const inputRef = useRef(null);
   const activeFieldClass = "text-xs -translate-y-3 ml-1 text-blue-500";
-  const inActiveFieldClass = "text-md translate-y-0 ml-2 text-white";
+  const inActiveFieldClass = "text-md translate-y-0 ml-2 text-gray-500";
+  const filledFieldClass = "text-xs -translate-y-3 ml-1 text-gray-500";
   const [labelClass, setLabelClass] = useState(inActiveFieldClass);
   const handleChange = useCallback(
     (val) => {
@@ -51,6 +52,8 @@ const TextFieldUI = ({
         "text-sm",
         "text-blue-500"
       );
+    } else {
+      e.target.previousSibling.classList.remove("text-blue-500");
     }
   }, []);
 
@@ -66,7 +69,7 @@ const TextFieldUI = ({
       {label && (
         <label
           htmlFor="input-field"
-          className={`transition-all duration-300 ${labelClass} focus:text-blue-500`}>
+          className={`transition-all duration-300 ${labelClass} `}>
           {label}
         </label>
       )}
@@ -78,6 +81,8 @@ const TextFieldUI = ({
         onBlurCapture={() => {
           if (fieldState?.length == 0) {
             setLabelClass(inActiveFieldClass);
+          } else {
+            setLabelClass(filledFieldClass);
           }
         }}
         type={type}
