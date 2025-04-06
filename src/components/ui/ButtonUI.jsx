@@ -1,6 +1,7 @@
 import React from "react";
 
 const ButtonUI = ({
+  children,
   label,
   handleClick,
   size = "medium",
@@ -24,7 +25,7 @@ const ButtonUI = ({
   return (
     <div>
       <button className={buttonStyles} onClick={handleClick}>
-        {label}
+        {children || label}
       </button>
     </div>
   );
