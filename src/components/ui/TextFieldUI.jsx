@@ -26,8 +26,8 @@ const TextFieldUI = ({
       xs: { width: "150px", height: "50px" },
       sm: { width: "200px", height: "40px" }, // Small size
       md: { width: "300px", height: "45px" }, // Medium (default)
-      lg: { width: "400px", height: "50px" }, // Large size
-      xlg: { width: "450px", height: "50px" }, // Large size
+      lg: { width: "100%", height: "50px" }, // Large size
+      xlg: { width: "100%", height: "50px" }, // Large size
     }),
     []
   );
@@ -66,11 +66,13 @@ const TextFieldUI = ({
       }`}
       onClick={() => {
         inputRef.current.focus();
-      }}>
+      }}
+    >
       {label && (
         <label
           htmlFor="input-field"
-          className={`transition-all duration-300 ${labelClass} `}>
+          className={`transition-all duration-300 ${labelClass} `}
+        >
           {label}
         </label>
       )}
