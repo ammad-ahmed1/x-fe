@@ -17,8 +17,10 @@ const EmailSignInForm = () => {
   };
   return (
     <>
-      <h2 className="text-3xl my-4 font-bold text-white">{"Sign in X"}</h2>
-      <div className="flex flex-col w-full justify-center lg:justify-start items-center lg:items-start  gap-2">
+      <div className="flex flex-col w-full justify-center  items-center  gap-2">
+        <div>
+          <h2 className="text-3xl my-4 font-bold text-white">{"Sign in X"}</h2>
+        </div>
         <ButtonUI
           size="x-large"
           bgColor="white"
@@ -95,43 +97,12 @@ const EmailSignInForm = () => {
           bgColor={"white"}
           textColor="black"
         />
-        <p className="w-[250px] lg:w-[300px] break-words text-xs text-gray-600">
-          By signing up, you agree to the{" "}
-          <a
-            href="/terms"
-            className="text-blue-600 no-underline hover:underline"
-          >
-            Terms of Service
-          </a>{" "}
-          and{" "}
-          <a
-            href="/privacy"
-            className="text-blue-600 no-underline hover:underline"
-          >
-            Privacy Policy
-          </a>
-          , including{" "}
-          <a
-            href="/cookies"
-            className="text-blue-600 no-underline hover:underline"
-          >
-            Cookie Use
-          </a>
-          .
-        </p>
-        <div className="my-6">
-          <h1 className="text-gray-200 text-md font-[900]">
-            Already have an account?
-          </h1>
-          <div className="my-4">
-            <ButtonUI
-              label={"Create Account"}
-              size="x-large"
-              bgColor={"transparent-primary"}
-              textColor="white"
-            />
-          </div>
-        </div>
+        <ButtonUI
+          label={"Create Account"}
+          size="x-large"
+          bgColor={"transparent-primary"}
+          textColor="white"
+        />
       </div>
     </>
   );
