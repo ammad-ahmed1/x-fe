@@ -17,6 +17,7 @@ const EmailSignInForm = () => {
   };
   return (
     <>
+      <h2 className="text-3xl my-4 font-bold text-white">{"Sign in X"}</h2>
       <div className="flex flex-col w-full justify-center lg:justify-start items-center lg:items-start  gap-2">
         <ButtonUI
           size="x-large"
@@ -98,19 +99,22 @@ const EmailSignInForm = () => {
           By signing up, you agree to the{" "}
           <a
             href="/terms"
-            className="text-blue-600 no-underline hover:underline">
+            className="text-blue-600 no-underline hover:underline"
+          >
             Terms of Service
           </a>{" "}
           and{" "}
           <a
             href="/privacy"
-            className="text-blue-600 no-underline hover:underline">
+            className="text-blue-600 no-underline hover:underline"
+          >
             Privacy Policy
           </a>
           , including{" "}
           <a
             href="/cookies"
-            className="text-blue-600 no-underline hover:underline">
+            className="text-blue-600 no-underline hover:underline"
+          >
             Cookie Use
           </a>
           .

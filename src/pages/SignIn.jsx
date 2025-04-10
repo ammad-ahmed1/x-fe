@@ -11,7 +11,7 @@ import EmailSignInForm from "../components/modules/auth/EmailSignInForm";
 
 const SignIn = () => {
   const [isSignupModalOpen, setIsSignUpModalOpen] = useState(false);
-  const [isSigninModalOpen, setIsSigninModalOpen] = useState(true);
+  const [isSigninModalOpen, setIsSigninModalOpen] = useState(false);
 
   const handleShowSignupModal = () => {
     setIsSignUpModalOpen(!isSignupModalOpen);
@@ -41,7 +41,8 @@ const SignIn = () => {
                text-4xl sm:text-5xl md:text-6xl 
                font-black 
                leading-[48px] sm:leading-[64px] md:leading-[84px]
-               mt-12 sm:mt-16 md:mt-20">
+               mt-12 sm:mt-16 md:mt-20"
+          >
             Happening now
           </h1>
           <h1 className="text-gray-200 text-2xl sm:text-3xl lg:text-4xl font-[900] leading-[84px] sm:leading-[64px] my-4 ld:my-12">
@@ -63,7 +64,15 @@ const SignIn = () => {
                           {user?.avatar}
                         </span>
                       </div>
-                      <span>Sign in as {user?.userName.split(" ")[0]}</span>
+                      <div>
+                        <p className="text-xs font-semibold text-start">
+                          Sign in as {user?.userName.split(" ")[0]}
+                        </p>
+
+                        <div className="text-gray-600 text-xs text-start">
+                          {user?.email}
+                        </div>
+                      </div>
                     </div>
                     <GoogleSVG className="w-5 h-5" />
                   </>
@@ -95,24 +104,28 @@ const SignIn = () => {
               size="x-large"
               bgColor={"primary"}
               textColor="white"
+              handleClick={handleShowSignupModal}
             />
             <p className="w-[250px] lg:w-[300px] break-words text-xs text-gray-600">
               By signing up, you agree to the{" "}
               <a
                 href="/terms"
-                className="text-blue-600 no-underline hover:underline">
+                className="text-blue-600 no-underline hover:underline"
+              >
                 Terms of Service
               </a>{" "}
               and{" "}
               <a
                 href="/privacy"
-                className="text-blue-600 no-underline hover:underline">
+                className="text-blue-600 no-underline hover:underline"
+              >
                 Privacy Policy
               </a>
               , including{" "}
               <a
                 href="/cookies"
-                className="text-blue-600 no-underline hover:underline">
+                className="text-blue-600 no-underline hover:underline"
+              >
                 Cookie Use
               </a>
               .
@@ -123,10 +136,11 @@ const SignIn = () => {
               </h1>
               <div className="my-4">
                 <ButtonUI
-                  label={"Create Account"}
+                  label={"Sign in"}
                   size="x-large"
                   bgColor={"transparent-primary"}
                   textColor="white"
+                  handleClick={handleShowSignInModal}
                 />
               </div>
             </div>
@@ -138,16 +152,19 @@ const SignIn = () => {
       <ModalUI
         isOpen={isSignupModalOpen}
         onClose={handleShowSignupModal}
-        size="large"
-        title={"Create your account"}>
-        <EmailSignUpForm />
+        title={"Sign in to X"}
+      >
+        <div className="flex w-[100%] justify-center">
+          <EmailSignUpForm />
+        </div>
       </ModalUI>
       {/* sign in modal */}
       <ModalUI
         isOpen={isSigninModalOpen}
         onClose={handleShowSignInModal}
         size="large"
-        title={"Sign in to X"}>
+        title={"Sign in to X"}
+      >
         <EmailSignInForm />
       </ModalUI>
     </>

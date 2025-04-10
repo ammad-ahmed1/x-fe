@@ -27,17 +27,22 @@ const ModalUI = ({
     // bg-black/50
     <div
       className="w-[100%] h-screen fixed inset-0  bg-[rgba(91,112,131,0.4)] z-50 flex justify-center items-center  "
-      onClick={handleOverlayClick}>
+      onClick={handleOverlayClick}
+    >
       {/* modal container */}
       <div
-        className={`modal-container flex justify-center items-center ${
-          size === "large" ? "w-[70%] " : "w-3/4 max-w-2xl mx-auto"
-        }`}>
+        className={`z-50 modal-container flex justify-center items-center  ${
+          size === "large"
+            ? "h-full w-full md:w-[70%] md:h-[90vh]"
+            : "h-full w-full md:w-3/4 max-w-2xl mx-auto"
+        }`}
+      >
         {/* modal div */}
         <div
-          className={`bg-black rounded-2xl relative p-4 ${
+          className={`z-50 bg-black rounded-2xl relative p-4 hfull w-full ${
             size == "large" ? "w-[60%] h-full" : "w-3/4 max-w-2xl mx-auto"
-          }`}>
+          }`}
+        >
           {/* Header */}
           <div className="modal-header flex w-full justify-between items-center">
             <div>
@@ -51,9 +56,16 @@ const ModalUI = ({
             </div>
             <div>button</div>
           </div>
-          <div className="my-12 text-3xl font-extrabold px-8">{title}</div>
+
           {/* Body */}
-          <div className="modal-body mt-4">{children}</div>
+          <div className="modal-body px-4 pb-4">
+            {/* {title && (
+              <div className="flex justify-start">
+                <h2 className="text-3xl font-bold text-white">{title}</h2>
+              </div>
+            )} */}
+            <div className="px-0">{children}</div>
+          </div>
 
           {/* Footer */}
           <div className="modal-footer flex justify-end mt-4">{footer}</div>
