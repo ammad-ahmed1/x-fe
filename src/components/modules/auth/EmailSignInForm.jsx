@@ -17,14 +17,14 @@ const EmailSignInForm = () => {
   };
   return (
     <>
-      <div className="flex flex-col  w-[270px] md:w-[465px] gap-4">
+      <div className="flex flex-col w-[270px] md:w-[465px] gap-4">
         <ButtonUI
           size="x-large"
           bgColor="white"
           textColor="black"
           // handleClick={handleClick}
         >
-          <div className="flex items-center justify-between w-full px-4">
+          <div className="flex items-center w-[270px] md:w-[300px] justify-between w-full px-4">
             {isLoggedIn ? (
               <>
                 <div className="flex items-center">
@@ -60,7 +60,20 @@ const EmailSignInForm = () => {
         <div className="w-[250px] lg:w-[300px]">
           <DividerUI content={"or"} />
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col w-[250px] lg:w-[300px] gap-4">
+          <TextFieldUI
+            fieldState={email}
+            setFieldState={setEmail}
+            disabled={false}
+            readOnly={false}
+            label="Name"
+            // maxChar={50}
+            startIcon={<i className="fas fa-user"></i>}
+            fullWidth
+            size="xlg"
+            className={" border-none outline-none"}
+            rounded={false}
+          />
           <TextFieldUI
             fieldState={email}
             setFieldState={setEmail}
@@ -70,20 +83,7 @@ const EmailSignInForm = () => {
             // maxChar={50}
             startIcon={<i className="fas fa-user"></i>}
             fullWidth
-            size="md"
-            className={" border-none outline-none"}
-            rounded={false}
-          />
-          <TextFieldUI
-            fieldState={password}
-            setFieldState={setPassword}
-            disabled={false}
-            readOnly={false}
-            label="Email"
-            // maxChar={50}
-            startIcon={<i className="fas fa-user"></i>}
-            fullWidth
-            size="md"
+            size="xlg"
             className={" border-none outline-none"}
             rounded={false}
           />
