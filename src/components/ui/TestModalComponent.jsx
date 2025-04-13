@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import TextFieldUI from "../../ui/TextFieldUI";
-import ModalUI from "../../ui/ModalUI";
-import ButtonUI from "../../ui/ButtonUI";
-import DatePickerUI from "../../ui/DatePickerUI";
-import MobileDateInputUI from "../../ui/MobileDateInputUI";
+import DatePickerUI from "./DatePickerUI";
+import TextFieldUI from "./TextFieldUI";
+import ButtonUI from "./ButtonUI";
+import MobileDateInputUI from "./MobileDateInputUI";
 
-const EmailSignUpForm = () => {
+const TestModalComponent = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [dateState, setDateState] = useState(null);
@@ -18,6 +17,16 @@ const EmailSignUpForm = () => {
     <div className="">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col w-[270px] md:w-[465px] gap-4">
+          {/* <div className="flex justify-start">
+            <h2 className="text-3xl my-4 font-bold text-white">
+              {"Create your account"}
+            </h2>
+          </div> */}
+          {/* <textarea
+              className="w-full p-2 border rounded"
+              placeholder="What's happening?"
+            /> */}
+
           <TextFieldUI
             fieldState={name}
             setFieldState={setName}
@@ -81,17 +90,4 @@ const EmailSignUpForm = () => {
   );
 };
 
-export default EmailSignUpForm;
-{
-  /* <div className="flex justify-start">
-          <h2 className="text-3xl my-4 font-bold text-white">
-            {"Create your account"}
-          </h2>
-        </div> */
-}
-{
-  /* <textarea
-            className="w-full p-2 border rounded"
-            placeholder="What's happening?"
-          /> */
-}
+export default TestModalComponent;

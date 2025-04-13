@@ -148,6 +148,7 @@ const SignIn = () => {
         </div>
       </div>
       <AuthFooter />
+
       {/* sign up modal */}
       <ModalUI
         isOpen={isSignupModalOpen}
@@ -158,17 +159,8 @@ const SignIn = () => {
           <EmailSignUpForm />
         </div>
       </ModalUI>
-      {/* sign in modal */}
 
-      <ModalUI
-        isOpen={isSigninModalOpen}
-        onClose={handleShowSignInModal}
-        title={"Sign in to X"}
-      >
-        <div className="flex w-[100%] justify-center">
-          <EmailSignInForm />
-        </div>
-      </ModalUI>
+      {/* sign in modal */}
       <ModalUI
         isOpen={isSigninModalOpen}
         onClose={handleShowSignInModal}

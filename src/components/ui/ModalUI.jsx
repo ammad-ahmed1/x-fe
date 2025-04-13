@@ -1,76 +1,63 @@
-import React from "react";
-import { X } from "lucide-react";
+import { useEffect } from "react";
 import LogoIcon from "../../assets/icons/LogoIcon";
 
-const ModalUI = ({
+export default function Modal({
   isOpen,
   onClose,
-  size = "medium",
-  header,
-  title,
   children,
-  footer,
-  clickOutsideToClose = true,
-  overlay = true,
-  animation = "fade",
-}) => {
+  rightButton = null,
+  title,
+}) {
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
-  const handleOverlayClick = (e) => {
-    if (clickOutsideToClose && e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
   return (
-    // overlay div
-    // bg-black/50
     <div
-      className="w-[100%] h-screen fixed inset-0  bg-[rgba(91,112,131,0.4)] z-50 flex justify-center items-center  "
-      onClick={handleOverlayClick}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+      onClick={onClose}
     >
-      {/* modal container */}
       <div
-        className={`modal-container flex justify-center items-center
-          //  ${size === "large" ? "w-[70%] " : "w-3/4 max-w-2xl mx-auto"}
-        `}
+        className="relative w-full h-full max-h-screen md:max-w-lg md:mx-4 md:h-auto md:rounded-2xl bg-black overflow-y-auto overflow-x-hidden shadow-lg transition-transform duration-300 ease-in-out"
+        onClick={(e) => e.stopPropagation()}
       >
-        {/* modal div */}
-        <div
-          className={`z-50 bg-black rounded-2xl relative p-4 hfull w-full ${
-            size == "large" ? "w-[60%] h-full" : "w-3/4 max-w-2xl mx-auto"
-          }`}
-        >
-          {/* Header */}
-          <div className="modal-header flex w-full justify-between items-center">
-            <div>
-              <X
-                className="w-6 h-6 text-gray-700 text-white cursor-pointer"
-                onClick={onClose}
-              />
-            </div>
-            <div>
-              <LogoIcon aria-label="App Logo" className="w-8 h-8" />
-            </div>
-            <div>button</div>
+        {/* Modal Header */}
+        <div className="flex items-center justify-between px-4 py-3 ">
+          {/* Left - Close Button */}
+          <button
+            onClick={onClose}
+            className="text-white hover:text-gray-300 transition"
+          >
+            ✖
+          </button>
+
+          {/* Center - Logo */}
+          <div className="flex-1 flex justify-center">
+            <LogoIcon size={24} />
           </div>
 
-          {/* Body */}
-          <div className="modal-body px-4 pb-4">
-            {/* {title && (
-              <div className="flex justify-start">
-                <h2 className="text-3xl font-bold text-white">{title}</h2>
-              </div>
-            )} */}
-            <div className="px-0">{children}</div>
+          {/* Right - Optional Button */}
+          <div className="min-w-[40px] flex justify-end">
+            {rightButton && (
+              <button
+                onClick={rightButton.onClick}
+                className="text-blue-500 hover:text-blue-600 text-sm font-medium"
+              >
+                {rightButton.label}
+              </button>
+            )}
           </div>
-
-          {/* Footer */}
-          <div className="modal-footer flex justify-end mt-4">{footer}</div>
         </div>
+        {title && (
+          <div className="px-6 ">
+            <h2 className="text-3xl my-4 font-bold text-white">{title}</h2>
+          </div>
+        )}
+        {/* Modal Body */}
+        <div className="p-6">{children}</div>
       </div>
     </div>
   );
-};
-
-export default ModalUI;
+}
