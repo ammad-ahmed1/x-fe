@@ -31,9 +31,9 @@ const ModalUI = ({
     >
       {/* modal container */}
       <div
-        className={`modal-container flex justify-center items-center ${
-          size === "large" ? "w-[70%] " : "w-3/4 max-w-2xl mx-auto"
-        }`}
+        className={`modal-container flex justify-center items-center
+          //  ${size === "large" ? "w-[70%] " : "w-3/4 max-w-2xl mx-auto"}
+        `}
       >
         {/* modal div */}
         <div
