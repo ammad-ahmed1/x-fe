@@ -20,7 +20,7 @@ export default function Modal({
       onClick={onClose}
     >
       <div
-        className="relative w-full h-full max-h-screen md:max-w-lg md:mx-4 md:h-auto md:rounded-2xl bg-black overflow-y-auto overflow-x-hidden shadow-lg transition-transform duration-300 ease-in-out"
+        className="relative max-h-screen md:mx-4 md:rounded-2xl bg-black overflow-y-auto overflow-x-hidden shadow-lg transition-transform duration-300 ease-in-out"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
