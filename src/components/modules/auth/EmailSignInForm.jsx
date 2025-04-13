@@ -17,7 +17,7 @@ const EmailSignInForm = () => {
   };
   return (
     <>
-      <div className="flex flex-col w-[270px] md:w-[465px] gap-4">
+      <div className="flex flex-col w-[270px] md:w-[300px] gap-4">
         <ButtonUI
           size="x-large"
           bgColor="white"
