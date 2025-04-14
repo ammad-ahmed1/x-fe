@@ -25,9 +25,9 @@ const EmailSignUpForm = () => {
             disabled={false}
             readOnly={false}
             label="Name"
-            // maxChar={50}
-            validation={regexValidators.email}
-            errorMsg={"Please enter a valid email address"}
+            maxChar={150}
+            validation={regexValidators.name}
+            errorMsg={"Please enter a valid name format"}
             startIcon={<i className="fas fa-user"></i>}
             fullWidth
             size="xlg"
@@ -41,6 +41,8 @@ const EmailSignUpForm = () => {
             readOnly={false}
             label="Email"
             // maxChar={50}
+            validation={regexValidators.email}
+            errorMsg={"Please enter a valid email address"}
             startIcon={<i className="fas fa-user"></i>}
             fullWidth
             size="xlg"
