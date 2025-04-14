@@ -1,35 +1,66 @@
 import React, { useState } from "react";
-import DatePickerUI from "./DatePickerUI";
-import TextFieldUI from "./TextFieldUI";
 import ButtonUI from "./ButtonUI";
-import MobileDateInputUI from "./MobileDateInputUI";
+import TextFieldUI from "./TextFieldUI";
 
 const TestModalComponent = () => {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [dateState, setDateState] = useState(null);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(dateState);
-    console.log("Form submitted!");
+  const [password, setPassword] = useState("");
+  const isLoggedIn = true;
+  const user = {
+    userName: "Ammad Ahmed",
+    email: "ammad@example.com",
+    avatar: "A",
+    provider: "google",
   };
   return (
-    <div className="">
-      <form onSubmit={handleSubmit}>
-        <div className="flex flex-col w-[270px] md:w-[465px] gap-4">
-          {/* <div className="flex justify-start">
-            <h2 className="text-3xl my-4 font-bold text-white">
-              {"Create your account"}
-            </h2>
-          </div> */}
-          {/* <textarea
-              className="w-full p-2 border rounded"
-              placeholder="What's happening?"
-            /> */}
-
+    <>
+      <div className="flex flex-col w-[270px] md:w-[300px] gap-4">
+        <ButtonUI
+          size="x-large"
+          bgColor="white"
+          textColor="black"
+          // handleClick={handleClick}
+        >
+          <div className="flex items-center  justify-between w-full px-4">
+            {isLoggedIn ? (
+              <>
+                <div className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center mr-2">
+                    <span className="text-white text-xs font-bold">
+                      {user?.avatar}
+                    </span>
+                  </div>
+                  <span>Sign in as {user?.userName.split(" ")[0]}</span>
+                </div>
+                {/* <GoogleSVG className="w-5 h-5" /> */}
+              </>
+            ) : (
+              <>
+                {/* <GoogleSVG className="w-5 h-5" /> */}
+                <span>Sign up with Google</span>
+                <div className="w-5 h-5" />
+              </>
+            )}
+          </div>
+        </ButtonUI>
+        <ButtonUI
+          label={
+            <span className="flex items-center justify-center gap-2">
+              {/* <AppleSVG className="w-5 h-5" /> */}
+              Sign in with Apple
+            </span>
+          }
+          size="x-large"
+          bgColor="white"
+          textColor="black"
+        />
+        <div className="w-[250px] lg:w-[300px]">
+          {/* <DividerUI content={"or"} /> */}
+        </div>
+        <div className="flex flex-col w-[250px] lg:w-[300px] gap-4">
           <TextFieldUI
-            fieldState={name}
-            setFieldState={setName}
+            fieldState={email}
+            setFieldState={setEmail}
             disabled={false}
             readOnly={false}
             label="Name"
@@ -53,40 +84,21 @@ const TestModalComponent = () => {
             className={" border-none outline-none"}
             rounded={false}
           />
-
-          <div className=" mt-4 max-w-[400px]" role="note">
-            <h3
-              className="text-gray-200 text-[15px] font-bold"
-              id="dob-disclaimer"
-            >
-              Date of birth
-            </h3>
-            <p
-              className="text-gray-500 text-[13px] mt-1"
-              aria-labelledby="dob-disclaimer"
-            >
-              This will not be shown publicly. Confirm your own age, even if
-              this account is for a business, a pet, or something else.
-            </p>
-          </div>
-          <span className="hidden md:block">
-            <DatePickerUI setDateState={setDateState} dateFormat="mm/dd/yy" />
-          </span>
-          <span className="block md:hidden">
-            <MobileDateInputUI />
-          </span>
-          <div className="my-8 mx-auto flex justify center">
-            <ButtonUI
-              label={"Next"}
-              // size="x-large"
-              bgColor={"gray"}
-              textColor="black"
-              externalClass="h-[50px] w-[270px] md:w-[450px] bg-gray-500 text-black"
-            />
-          </div>
         </div>
-      </form>
-    </div>
+        <ButtonUI
+          label={"Next"}
+          size="x-large"
+          bgColor={"white"}
+          textColor="black"
+        />
+        <ButtonUI
+          label={"Create Account"}
+          size="x-large"
+          bgColor={"transparent-primary"}
+          textColor="white"
+        />
+      </div>
+    </>
   );
 };
 
