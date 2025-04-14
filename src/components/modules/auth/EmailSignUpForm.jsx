@@ -4,6 +4,7 @@ import ModalUI from "../../ui/ModalUI";
 import ButtonUI from "../../ui/ButtonUI";
 import DatePickerUI from "../../ui/DatePickerUI";
 import MobileDateInputUI from "../../ui/MobileDateInputUI";
+import { regexValidators } from "../../../utils/validators";
 
 const EmailSignUpForm = () => {
   const [name, setName] = useState("");
@@ -25,6 +26,8 @@ const EmailSignUpForm = () => {
             readOnly={false}
             label="Name"
             // maxChar={50}
+            validation={regexValidators.email}
+            errorMsg={"Please enter a valid email address"}
             startIcon={<i className="fas fa-user"></i>}
             fullWidth
             size="xlg"
