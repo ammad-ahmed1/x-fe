@@ -12,7 +12,7 @@ const SelectUI = ({
   endIcon,
 }) => {
   const sizeStyles = {
-    xs: { width: "200px", height: "300px" },
+    xs: { width: "100%", height: "300px" },
     sm: { width: "200px", height: "300px" }, // Small size
     md: { width: "300px", height: "300px" }, // Medium (default)
     lg: { width: "400px", height: "300px" }, // Large size
@@ -30,7 +30,8 @@ const SelectUI = ({
           console.log(item);
           // setSelectItem(item);
           setValue(item);
-        }}>
+        }}
+      >
         {item.label}
       </div>
     ); // not selecting the item
@@ -62,9 +63,10 @@ const SelectUI = ({
 
       <div
         ref={dropdownRef}
-        className={`h-[200px] w-[300px] overflow-hidden rounded-lg bg-black border border-[rgb(51,54,57)] shadow-[0_0_15px_rgba(255,255,255,0.1)] overflow-y-auto ${
+        className={`h-[200px] w-${size} overflow-hidden rounded-lg bg-black border border-[rgb(51,54,57)] shadow-[0_0_15px_rgba(255,255,255,0.1)] overflow-y-auto ${
           !isShowDropdown && "hidden"
-        }`}>
+        }`}
+      >
         {data?.map((item, index) => (
           <React.Fragment key={item.id || index}>
             {renderItems(item)}
