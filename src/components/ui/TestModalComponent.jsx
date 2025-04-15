@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import ButtonUI from "./ButtonUI";
 import TextFieldUI from "./TextFieldUI";
+import DatePickerUI from "./DatePickerUI";
 
 const TestModalComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [dateState, setDateState] = useState(null);
   const isLoggedIn = true;
   const user = {
     userName: "Ammad Ahmed",
@@ -14,7 +16,7 @@ const TestModalComponent = () => {
   };
   return (
     <>
-      <div className="flex flex-col w-[270px] md:w-[300px] gap-4">
+      <div className="flex flex-col w-[270px] md:w-[450px] gap-4">
         <ButtonUI
           size="x-large"
           bgColor="white"
@@ -84,6 +86,7 @@ const TestModalComponent = () => {
             className={" border-none outline-none"}
             rounded={false}
           />
+          <DatePickerUI setDateState={setDateState} dateFormat={"mm/dd/yyyy"} />
         </div>
         <ButtonUI
           label={"Next"}
