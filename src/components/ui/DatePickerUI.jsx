@@ -12,7 +12,6 @@ const DatePickerUI = ({ dateState, setDateState, dateFormat }) => {
     day: null,
     year: null,
   });
-
   const monthsArr = [
     { label: "January", value: 1 },
     { label: "February", value: 2 },
@@ -97,8 +96,11 @@ const DatePickerUI = ({ dateState, setDateState, dateFormat }) => {
   };
 
   const formatDate = () => {
+    `  `;
     // Return empty string if any date part is missing
-    if (!date?.day || !date?.month || !date?.year) return "";
+    if (!date?.day || !date?.month || !date?.year) {
+      return "";
+    }
 
     let formattedDate = "";
 
@@ -112,10 +114,9 @@ const DatePickerUI = ({ dateState, setDateState, dateFormat }) => {
       // Fallback
       formattedDate = `${date?.day}/${date?.month}/${date?.year}`;
     }
-
     // Validate format using regex
-    const isValidFormat =
-      regexValidators.ageDate[dateFormat]?.test(formattedDate);
+    const isValidFormat = regexValidators?.ageDate?.hasOwnProperty(dateFormat);
+
     const isOfAge = is18OrOlder(formattedDate, dateFormat);
 
     if (isValidFormat && isOfAge) {
@@ -123,7 +124,6 @@ const DatePickerUI = ({ dateState, setDateState, dateFormat }) => {
       setIsShowError(false);
     } else {
       setDateState(""); // or set error message
-      console.warn("Invalid DOB or under 18");
       setIsShowError(true);
     }
   };
@@ -140,7 +140,6 @@ const DatePickerUI = ({ dateState, setDateState, dateFormat }) => {
 
   useEffect(() => {
     if (date?.month && date?.day && date?.year) {
-      console.log("run the formate date functions");
       formatDate();
     }
   }, [date]);

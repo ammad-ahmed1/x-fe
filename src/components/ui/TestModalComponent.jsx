@@ -86,7 +86,7 @@ const TestModalComponent = () => {
             className={" border-none outline-none"}
             rounded={false}
           />
-          <DatePickerUI setDateState={setDateState} dateFormat="mm/dd/yy" />
+          <DatePickerUI setDateState={setDateState} dateFormat={"mm/dd/yyyy"} />
         </div>
         <ButtonUI
           label={"Next"}

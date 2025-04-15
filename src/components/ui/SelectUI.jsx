@@ -27,7 +27,6 @@ const SelectUI = ({
         className="cursor-pointer"
         onMouseDown={(e) => {
           e.stopPropagation();
-          console.log(item);
           // setSelectItem(item);
           setValue(item);
         }}
