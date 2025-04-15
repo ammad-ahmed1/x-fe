@@ -1,6 +1,8 @@
 import React, { useCallback, useMemo, useRef, useState } from "react";
 
 const TextFieldUI = ({
+  name,
+  state,
   fieldState,
   setFieldState,
   type,
@@ -40,7 +42,11 @@ const TextFieldUI = ({
 
   const handleChange = useCallback(
     (val) => {
-      setFieldState(val);
+      setFieldState((prev) => ({
+        ...prev,
+        [name]: val, // dynamically update the correct field
+      }));
+
       if (validation?.test(val)) {
         setIsShowErrorMsg(false);
       }
@@ -99,10 +105,10 @@ const TextFieldUI = ({
           disabled={disabled}
           readOnly={readOnly}
           value={fieldState}
-          onChange={(e) => handleChange(e.target.value)}
           maxLength={maxChar}
           minLength={minChar}
           pattern={validation}
+          onChange={(e) => handleChange(e.target.value)}
           onFocus={(e) =>
             e.target.previousSibling.classList.add(
               "top-2",
