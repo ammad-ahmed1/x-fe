@@ -78,6 +78,7 @@ const TestModalComponent = () => {
             state={formData}
             fieldState={formData.user_name}
             setFieldState={setFormData}
+            errorMsg={formErrors?.user_name}
             disabled={false}
             readOnly={false}
             label="Name"
@@ -90,8 +91,10 @@ const TestModalComponent = () => {
           />
           <TextFieldUI
             name="user_email"
-            state={formData}
+            // state={formData}
             fieldState={formData.user_email}
+            setFieldState={setFormData}
+            errorMsg={formErrors?.user_email}
             disabled={false}
             readOnly={false}
             label="Email"
@@ -102,7 +105,12 @@ const TestModalComponent = () => {
             className={" border-none outline-none"}
             rounded={false}
           />
-          <DatePickerUI setDateState={setDateState} dateFormat={"mm/dd/yyyy"} />
+          <DatePickerUI
+            name="user_dob"
+            dateState={formData.user_dob}
+            setDateState={setFormData}
+            dateFormat={"mm/dd/yyyy"}
+          />
         </div>
         <ButtonUI
           label={"Next"}
