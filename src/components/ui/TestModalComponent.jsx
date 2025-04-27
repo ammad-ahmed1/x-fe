@@ -4,6 +4,16 @@ import TextFieldUI from "./TextFieldUI";
 import DatePickerUI from "./DatePickerUI";
 
 const TestModalComponent = () => {
+  const [formData, setFormData] = useState({
+    user_email: "",
+    user_password: "",
+    user_dob: "",
+  });
+  const [formErrors, setformErrors] = useState({
+    user_email: "",
+    user_password: "",
+    user_dob: "",
+  });
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [dateState, setDateState] = useState(null);
@@ -14,6 +24,7 @@ const TestModalComponent = () => {
     avatar: "A",
     provider: "google",
   };
+  console.log(formData, "....FD");
   return (
     <>
       <div className="flex flex-col w-[270px] md:w-[450px] gap-4">
@@ -61,8 +72,13 @@ const TestModalComponent = () => {
         </div>
         <div className="flex flex-col w-[250px] lg:w-[300px] gap-4">
           <TextFieldUI
-            fieldState={email}
-            setFieldState={setEmail}
+            // fieldState={email}
+            // setFieldState={setEmail}
+            name="user_name"
+            state={formData}
+            fieldState={formData.user_name}
+            setFieldState={setFormData}
+            errorMsg={formErrors?.user_name}
             disabled={false}
             readOnly={false}
             label="Name"
@@ -74,8 +90,11 @@ const TestModalComponent = () => {
             rounded={false}
           />
           <TextFieldUI
-            fieldState={email}
-            setFieldState={setEmail}
+            name="user_email"
+            // state={formData}
+            fieldState={formData.user_email}
+            setFieldState={setFormData}
+            errorMsg={formErrors?.user_email}
             disabled={false}
             readOnly={false}
             label="Email"
@@ -86,7 +105,12 @@ const TestModalComponent = () => {
             className={" border-none outline-none"}
             rounded={false}
           />
-          <DatePickerUI setDateState={setDateState} dateFormat={"mm/dd/yyyy"} />
+          <DatePickerUI
+            name="user_dob"
+            dateState={formData.user_dob}
+            setDateState={setFormData}
+            dateFormat={"mm/dd/yyyy"}
+          />
         </div>
         <ButtonUI
           label={"Next"}

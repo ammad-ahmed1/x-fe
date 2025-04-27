@@ -116,10 +116,12 @@ const DatePickerUI = ({ dateState, setDateState, dateFormat }) => {
     }
     // Validate format using regex
     const isValidFormat = regexValidators?.ageDate?.hasOwnProperty(dateFormat);
-
     const isOfAge = is18OrOlder(formattedDate, dateFormat);
-
+    console.log(isValidFormat, "........is valid");
+    console.log(isOfAge, "........is older");
+    console.log(formattedDate, "........FD");
     if (isValidFormat && isOfAge) {
+      console.log("all good");
       setDateState(formattedDate);
       setIsShowError(false);
     } else {
@@ -127,7 +129,7 @@ const DatePickerUI = ({ dateState, setDateState, dateFormat }) => {
       setIsShowError(true);
     }
   };
-
+  // console.log(dateState, ".....final date");
   useEffect(() => {
     groupYearsByDecade();
   }, []);
