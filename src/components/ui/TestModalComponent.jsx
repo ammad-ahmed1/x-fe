@@ -14,6 +14,7 @@ const TestModalComponent = () => {
     user_password: "",
     user_dob: "",
   });
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [dateState, setDateState] = useState(null);

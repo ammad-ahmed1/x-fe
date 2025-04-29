@@ -11,8 +11,8 @@ function App() {
   const [isSigninModalOpen, setIsSigninModalOpen] = useState(true);
   return (
     <div className="">
-      {/* <Homepage /> */}
-      <SignIn />
+      <Homepage />
+      {/* <SignIn /> */}
     </div>
   );
 }
