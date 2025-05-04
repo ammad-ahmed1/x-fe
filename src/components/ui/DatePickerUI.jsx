@@ -123,11 +123,11 @@ const DatePickerUI = ({
     // Validate format using regex
     const isValidFormat = regexValidators?.ageDate?.hasOwnProperty(dateFormat);
     const isOfAge = is18OrOlder(formattedDate, dateFormat);
-    console.log(isValidFormat, "........is valid");
-    console.log(isOfAge, "........is older");
-    console.log(formattedDate, "........FD");
+    // console.log(isValidFormat, "........is valid");
+    // console.log(isOfAge, "........is older");
+    // console.log(formattedDate, "........FD");
     if (isValidFormat && isOfAge) {
-      console.log("all good");
+      // console.log("all good");
       setDateState(formattedDate);
       onChange(name, formattedDate);
       setIsShowError(false);

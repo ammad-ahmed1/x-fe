@@ -11,6 +11,7 @@ const TestModalComponent = () => {
     user_password: "",
     user_dob: "",
   });
+
   const [formErrors, setformErrors] = useState({
     user_name: "",
     user_email: "",
@@ -18,9 +19,6 @@ const TestModalComponent = () => {
     user_dob: "",
   });
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [dateState, setDateState] = useState(null);
   const isLoggedIn = true;
   const user = {
     userName: "Ammad Ahmed",
@@ -28,11 +26,10 @@ const TestModalComponent = () => {
     avatar: "A",
     provider: "google",
   };
-  console.log(formData, "....FD");
 
   const { values, errors, handleFieldChange, handleSubmit, handleReset } =
     useForm({
-      initialValues: formData,
+      initialValues: defaultFormValues,
       validationSchema: {},
       onSubmit: (values) => {
         console.log(values);
@@ -41,7 +38,9 @@ const TestModalComponent = () => {
 
   return (
     <>
-      <div className="flex flex-col w-[270px] md:w-[450px] gap-4">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col w-[270px] md:w-[450px] gap-4">
         <ButtonUI
           size="x-large"
           bgColor="white"
@@ -86,12 +85,9 @@ const TestModalComponent = () => {
         </div>
         <div className="flex flex-col w-[250px] lg:w-[300px] gap-4">
           <TextFieldUI
-            // fieldState={email}
-            // setFieldState={setEmail}
             name="user_name"
             state={formData}
             fieldState={values?.user_name}
-            // setFieldState={setFormData}
             onChange={handleFieldChange}
             errorMsg={errors?.user_name}
             disabled={false}
@@ -106,7 +102,6 @@ const TestModalComponent = () => {
           />
           <TextFieldUI
             name="user_email"
-            // state={formData}
             fieldState={values?.user_email}
             errorMsg={errors?.user_email}
             onChange={handleFieldChange}
@@ -140,7 +135,7 @@ const TestModalComponent = () => {
           bgColor={"transparent-primary"}
           textColor="white"
         />
-      </div>
+      </form>
     </>
   );
 };
