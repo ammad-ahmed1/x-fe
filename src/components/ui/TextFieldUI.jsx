@@ -111,7 +111,7 @@ const TextFieldUI = ({
           maxLength={maxChar}
           minLength={minChar}
           pattern={validation}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={(e) => handleChange(e)}
           onFocus={(e) =>
             e.target.previousSibling.classList.add(
               "top-2",
