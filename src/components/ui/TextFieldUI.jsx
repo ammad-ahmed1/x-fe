@@ -40,19 +40,23 @@ const TextFieldUI = ({
   const [labelClass, setLabelClass] = useState(inActiveFieldClass);
   const [isShowErrorMsg, setIsShowErrorMsg] = useState(false);
 
-  const handleChange = useCallback(
-    (val) => {
-      setFieldState((prev) => ({
-        ...prev,
-        [name]: val, // dynamically update the correct field
-      }));
+  // const handleChange = useCallback(
+  //   (val) => {
+  //     setFieldState((prev) => ({
+  //       ...prev,
+  //       [name]: val, // dynamically update the correct field
+  //     }));
 
-      if (validation?.test(val)) {
-        setIsShowErrorMsg(false);
-      }
-    },
-    [setFieldState]
-  );
+  //     if (validation?.test(val)) {
+  //       setIsShowErrorMsg(false);
+  //     }
+  //   },
+  //   [setFieldState]
+  // );
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    onChange(name, value);
+  };
   const handleFocus = useCallback((e) => {
     e.target.previousSibling.classList.add("top-2", "text-sm", "text-blue-500");
   }, []);
@@ -78,13 +82,11 @@ const TextFieldUI = ({
         }`}
         onClick={() => {
           inputRef.current.focus();
-        }}
-      >
+        }}>
         {label && (
           <label
             htmlFor="input-field"
-            className={`transition-all duration-300 ${labelClass} `}
-          >
+            className={`transition-all duration-300 ${labelClass} `}>
             {label}
           </label>
         )}
@@ -100,6 +102,7 @@ const TextFieldUI = ({
               setLabelClass(filledFieldClass);
             }
           }}
+          name={name}
           type={type}
           placeholder={placeholder}
           disabled={disabled}
