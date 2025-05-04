@@ -29,7 +29,7 @@ const TestModalComponent = () => {
 
   const { values, errors, handleFieldChange, handleSubmit, handleReset } =
     useForm({
-      initialValues: defaultFormValues,
+      initialValues: formData,
       validationSchema: {},
       onSubmit: (values) => {
         console.log(values);
@@ -117,7 +117,7 @@ const TestModalComponent = () => {
           />
           <DatePickerUI
             name="user_dob"
-            dateState={formData.user_dob}
+            dateState={values?.user_dob}
             setDateState={setFormData}
             onChange={handleFieldChange}
             dateFormat={"mm/dd/yyyy"}
