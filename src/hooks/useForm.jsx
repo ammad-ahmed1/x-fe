@@ -29,7 +29,7 @@ const useForm = ({ initialValues, validationSchema }) => {
   );
   const handleValidate = () => {};
   const handleSubmit = () => {};
-  return { handleReset, handleChange, handleValidate, handleSubmit };
+  return { handleReset, handleFieldChange, handleValidate, handleSubmit };
   return <div></div>;
 };
 
