@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import ButtonUI from "./ButtonUI";
 import TextFieldUI from "./TextFieldUI";
 import DatePickerUI from "./DatePickerUI";
+import useForm from "../../hooks/useForm";
 
 const TestModalComponent = () => {
   const [formData, setFormData] = useState({
+    user_name: "",
     user_email: "",
     user_password: "",
     user_dob: "",
   });
   const [formErrors, setformErrors] = useState({
+    user_name: "",
     user_email: "",
     user_password: "",
     user_dob: "",
@@ -26,6 +29,16 @@ const TestModalComponent = () => {
     provider: "google",
   };
   console.log(formData, "....FD");
+
+  const { values, errors, handleFieldChange, handleSubmit, handleReset } =
+    useForm({
+      initialValues: formData,
+      validationSchema: {},
+      onSubmit: (values) => {
+        console.log(values);
+      },
+    });
+
   return (
     <>
       <div className="flex flex-col w-[270px] md:w-[450px] gap-4">
@@ -79,6 +92,7 @@ const TestModalComponent = () => {
             state={formData}
             fieldState={formData.user_name}
             setFieldState={setFormData}
+            onChange={handleFieldChange}
             errorMsg={formErrors?.user_name}
             disabled={false}
             readOnly={false}
