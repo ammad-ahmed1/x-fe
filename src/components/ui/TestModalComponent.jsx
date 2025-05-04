@@ -90,10 +90,10 @@ const TestModalComponent = () => {
             // setFieldState={setEmail}
             name="user_name"
             state={formData}
-            fieldState={formData.user_name}
-            setFieldState={setFormData}
+            fieldState={values?.user_name}
+            // setFieldState={setFormData}
             onChange={handleFieldChange}
-            errorMsg={formErrors?.user_name}
+            errorMsg={errors?.user_name}
             disabled={false}
             readOnly={false}
             label="Name"
@@ -107,9 +107,9 @@ const TestModalComponent = () => {
           <TextFieldUI
             name="user_email"
             // state={formData}
-            fieldState={formData.user_email}
-            setFieldState={setFormData}
-            errorMsg={formErrors?.user_email}
+            fieldState={values?.user_email}
+            errorMsg={errors?.user_email}
+            onChange={handleFieldChange}
             disabled={false}
             readOnly={false}
             label="Email"
@@ -124,6 +124,7 @@ const TestModalComponent = () => {
             name="user_dob"
             dateState={formData.user_dob}
             setDateState={setFormData}
+            onChange={handleFieldChange}
             dateFormat={"mm/dd/yyyy"}
           />
         </div>

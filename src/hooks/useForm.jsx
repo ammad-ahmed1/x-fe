@@ -14,8 +14,12 @@ const useForm = ({ initialValues, validationSchema }) => {
     setValues(initialValues);
     setErrors({});
   };
+  console.log(values, "........form valsss");
   const handleFieldChange = useCallback(
     (name, val) => {
+      console.log("I am called");
+      console.log(name, ".....name");
+      console.log(val, ".....val");
       setValues((prev) => ({
         ...prev,
         [name]: val, // dynamically update the correct field
