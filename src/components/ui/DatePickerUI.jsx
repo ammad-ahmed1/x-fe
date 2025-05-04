@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import SelectUI from "./SelectUI";
 import { regexValidators } from "../../utils/validators";
 
-const DatePickerUI = ({ dateState, setDateState, dateFormat, onChange }) => {
+const DatePickerUI = ({
+  name,
+  dateState,
+  setDateState,
+  dateFormat,
+  onChange,
+}) => {
   const [yearsArr, setYearsArr] = useState([]);
   const [datesArr, setDatesArr] = useState([]);
   const [isShowError, setIsShowError] = useState(false);
@@ -123,7 +129,7 @@ const DatePickerUI = ({ dateState, setDateState, dateFormat, onChange }) => {
     if (isValidFormat && isOfAge) {
       console.log("all good");
       setDateState(formattedDate);
-      onChange(formattedDate);
+      onChange(name, formattedDate);
       setIsShowError(false);
     } else {
       setDateState(""); // or set error message
