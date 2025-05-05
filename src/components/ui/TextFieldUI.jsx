@@ -55,7 +55,7 @@ const TextFieldUI = ({
   // );
   const handleChange = (e) => {
     const { name, value } = e.target;
-    onChange(name, value);
+    onChange(name, value, validation);
   };
   const handleFocus = useCallback((e) => {
     e.target.previousSibling.classList.add("top-2", "text-sm", "text-blue-500");

@@ -90,6 +90,7 @@ const TestModalComponent = () => {
             fieldState={values?.user_name}
             onChange={handleFieldChange}
             errorMsg={errors?.user_name}
+            validation={signupSchema?.user_email}
             disabled={false}
             readOnly={false}
             label="Name"
