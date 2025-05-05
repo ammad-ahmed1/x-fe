@@ -3,6 +3,7 @@ import ButtonUI from "./ButtonUI";
 import TextFieldUI from "./TextFieldUI";
 import DatePickerUI from "./DatePickerUI";
 import useForm from "../../hooks/useForm";
+import { signupErrorMessages, signupSchema } from "../../utils/validators";
 
 const TestModalComponent = () => {
   const [formData, setFormData] = useState({
@@ -30,12 +31,13 @@ const TestModalComponent = () => {
   const { values, errors, handleFieldChange, handleSubmit, handleReset } =
     useForm({
       initialValues: formData,
-      validationSchema: {},
+      validationSchema: signupSchema,
+      errorMsgs: signupErrorMessages,
       onSubmit: (values) => {
         console.log(values);
       },
     });
-
+  console.log(errors, ".......err");
   return (
     <>
       <form
@@ -105,6 +107,7 @@ const TestModalComponent = () => {
             name="user_email"
             fieldState={values?.user_email}
             errorMsg={errors?.user_email}
+            validation={signupSchema?.user_email}
             onChange={handleFieldChange}
             disabled={false}
             readOnly={false}

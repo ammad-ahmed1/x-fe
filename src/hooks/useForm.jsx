@@ -5,28 +5,47 @@
 // Reset or clear the form
 // Allow you to hook into submission (API call, etc.)
 import React, { useCallback, useState } from "react";
+import { signupErrorMessages } from "../utils/validators";
 
-const useForm = ({ initialValues, validationSchema, onSubmit }) => {
+const useForm = ({
+  initialValues,
+  validationSchema,
+  validationErrors,
+  errorMsgs,
+  onSubmit,
+}) => {
   const [values, setValues] = useState(initialValues);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState(validationErrors);
 
   const handleReset = () => {
     setValues(initialValues);
     setErrors({});
   };
   const handleFieldChange = useCallback(
-    (name, val) => {
+    (name, val, validation) => {
       setValues((prev) => ({
         ...prev,
         [name]: val,
       }));
 
-      //  if (validation?.test(val)) {
-      //    setIsShowErrorMsg(false);
-      //  }
+      const validationRegex = validationSchema?.[name];
+      const errorMsg = errorMsgs?.[name];
+
+      if (validationRegex && !validationRegex.test(val)) {
+        setErrors((prev) => ({
+          ...prev,
+          [name]: errorMsg,
+        }));
+      } else {
+        setErrors((prev) => ({
+          ...prev,
+          [name]: "",
+        }));
+      }
     },
-    [setValues]
+    [setValues, validationSchema, errorMsgs]
   );
+  // console.log(errors, "....err state");
   const handleValidate = () => {};
   const handleSubmit = (e) => {
     e?.preventDefault?.();
