@@ -95,6 +95,7 @@ const TestModalComponent = () => {
             fieldState={formData.user_email}
             setFieldState={setFormData}
             errorMsg={formErrors?.user_email}
+            validation={signupSchema?.user_email}
             disabled={false}
             readOnly={false}
             label="Email"
