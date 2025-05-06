@@ -32,12 +32,14 @@ const TestModalComponent = () => {
     useForm({
       initialValues: formData,
       validationSchema: signupSchema,
+      formErrors: formErrors,
       errorMsgs: signupErrorMessages,
       onSubmit: (values) => {
         console.log(values);
       },
     });
   console.log(errors, ".......err");
+  console.log(values, ".......vals");
   return (
     <>
       <form

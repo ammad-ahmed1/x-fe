@@ -12,10 +12,11 @@ const useForm = ({
   validationSchema,
   validationErrors,
   errorMsgs,
+  formErrors,
   onSubmit,
 }) => {
   const [values, setValues] = useState(initialValues);
-  const [errors, setErrors] = useState(validationErrors);
+  const [errors, setErrors] = useState(formErrors);
 
   const handleReset = () => {
     setValues(initialValues);
@@ -43,7 +44,7 @@ const useForm = ({
         }));
       }
     },
-    [setValues, validationSchema, errorMsgs]
+    [setValues, validationSchema, errors]
   );
   // console.log(errors, "....err state");
   const handleValidate = () => {};
