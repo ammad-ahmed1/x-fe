@@ -3,7 +3,11 @@ import ButtonUI from "./ButtonUI";
 import TextFieldUI from "./TextFieldUI";
 import DatePickerUI from "./DatePickerUI";
 import useForm from "../../hooks/useForm";
+<<<<<<< Updated upstream
 import { signupErrorMessages, signupSchema } from "../../utils/validators";
+=======
+import { signupSchema } from "../../utils/validators";
+>>>>>>> Stashed changes
 
 const TestModalComponent = () => {
   const [formData, setFormData] = useState({
@@ -28,6 +32,7 @@ const TestModalComponent = () => {
     provider: "google",
   };
 
+<<<<<<< Updated upstream
   const {
     values,
     errors,
@@ -47,6 +52,18 @@ const TestModalComponent = () => {
   });
   console.log(errors, ".......err");
   // console.log(values, ".......vals");
+=======
+  const { values, errors, handleFieldChange, handleSubmit, handleReset } =
+    useForm({
+      initialValues: formData,
+      errors: formErrors,
+      validationSchema: signupSchema,
+      onSubmit: (values) => {
+        console.log(values);
+      },
+    });
+
+>>>>>>> Stashed changes
   return (
     <>
       <form
@@ -100,6 +117,7 @@ const TestModalComponent = () => {
             state={formData}
             fieldState={values?.user_name}
             onChange={handleFieldChange}
+            validation={signupSchema?.user_name}
             errorMsg={errors?.user_name}
             // validation={signupSchema?.user_email}
             disabled={false}

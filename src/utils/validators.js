@@ -14,6 +14,7 @@ export const regexValidators = {
     "yyyy/mm/dd": /^\d{4}\/(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])$/,
   },
 };
+<<<<<<< Updated upstream
 
 export const signupSchema = {
   user_email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -29,4 +30,12 @@ export const signupErrorMessages = {
   user_name:
     "Name should only contain letters and may include spaces, hyphens, or apostrophes.",
   user_dob: "Please enter a valid date of birth in MM-DD-YYYY format.",
+=======
+export const signupSchema = {
+  user_name: /^(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]{3,16}(?<![_.])$/,
+  user_email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+  user_password:
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+  user_dob: /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/, // YYYY-MM-DD
+>>>>>>> Stashed changes
 };
