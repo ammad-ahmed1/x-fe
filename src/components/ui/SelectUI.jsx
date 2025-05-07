@@ -10,6 +10,7 @@ const SelectUI = ({
   size,
   disabled,
   endIcon,
+  error,
 }) => {
   const sizeStyles = {
     xs: { width: "100%", height: "300px" },
@@ -29,8 +30,7 @@ const SelectUI = ({
           e.stopPropagation();
           // setSelectItem(item);
           setValue(item);
-        }}
-      >
+        }}>
         {item.label}
       </div>
     ); // not selecting the item
@@ -48,7 +48,10 @@ const SelectUI = ({
     setValue(selectItem);
   }, [selectItem]);
   return (
-    <div onFocusCapture={() => handleShowDropdown()} onBlurCapture={handleBlur}>
+    <div
+      className="relative"
+      onFocusCapture={() => handleShowDropdown()}
+      onBlurCapture={handleBlur}>
       <TextFieldUI
         fieldState={value?.label || value}
         // setFieldState={setSelectItem}
@@ -62,10 +65,9 @@ const SelectUI = ({
 
       <div
         ref={dropdownRef}
-        className={`h-[200px] w-${size} overflow-hidden rounded-lg bg-black border border-[rgb(51,54,57)] shadow-[0_0_15px_rgba(255,255,255,0.1)] overflow-y-auto ${
+        className={`absolute z-50 h-[250px] w-full w-${size} overflow-hidden rounded-lg bg-black border border-[rgb(51,54,57)] shadow-[0_0_15px_rgba(255,255,255,0.1)] overflow-y-auto ${
           !isShowDropdown && "hidden"
-        }`}
-      >
+        }`}>
         {data?.map((item, index) => (
           <React.Fragment key={item.id || index}>
             {renderItems(item)}

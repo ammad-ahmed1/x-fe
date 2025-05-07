@@ -134,6 +134,7 @@ const TestModalComponent = () => {
             setDateState={setFormData}
             onChange={handleFieldChange}
             dateFormat={"mm/dd/yyyy"}
+            errorMsg={formErrors?.user_dob}
           />
         </div>
         <ButtonUI

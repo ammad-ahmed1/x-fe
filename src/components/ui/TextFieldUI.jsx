@@ -77,7 +77,9 @@ const TextFieldUI = ({
     <div>
       <div
         style={sizeStyles[size]}
-        className={`relative p-0 w-fit inline-flex items-center border border-[rgb(51,54,57)] focus-within:border-blue-500 border hover:cursor-text ${
+        className={`relative p-0 w-fit inline-flex items-center ${
+          errorMsg ? "border border-red" : "border border-[rgb(51,54,57)]"
+        } focus-within:border-blue-500 border hover:cursor-text ${
           rounded && rounded
         }`}
         onClick={() => {
@@ -86,7 +88,7 @@ const TextFieldUI = ({
         {label && (
           <label
             htmlFor="input-field"
-            className={`transition-all duration-300 ${labelClass} `}>
+            className={`transition-all duration-300 ${labelClass} ${errorMsg} ? "text-red-500" : ""`}>
             {label}
           </label>
         )}
@@ -135,7 +137,12 @@ const TextFieldUI = ({
         />
         {endIcon && endIcon}
       </div>
-      {errorMsg && isShowErrorMsg && (
+      {/* {errorMsg && isShowErrorMsg && (
+        <span id="error-message" className="text-red-500">
+          {errorMsg}
+        </span>
+      )} */}
+      {errorMsg && (
         <span id="error-message" className="text-red-500">
           {errorMsg}
         </span>
