@@ -28,18 +28,25 @@ const TestModalComponent = () => {
     provider: "google",
   };
 
-  const { values, errors, handleFieldChange, handleSubmit, handleReset } =
-    useForm({
-      initialValues: formData,
-      validationSchema: signupSchema,
-      formErrors: formErrors,
-      errorMsgs: signupErrorMessages,
-      onSubmit: (values) => {
-        console.log(values);
-      },
-    });
+  const {
+    values,
+    errors,
+    handleFieldChange,
+    handleSubmit,
+    handleReset,
+    handleValidate,
+  } = useForm({
+    initialValues: formData,
+    validationSchema: signupSchema,
+    formErrors: formErrors,
+    errorMsgs: signupErrorMessages,
+    onSubmit: (values) => {
+      // console.log(values);
+      handleValidate();
+    },
+  });
   console.log(errors, ".......err");
-  console.log(values, ".......vals");
+  // console.log(values, ".......vals");
   return (
     <>
       <form
@@ -94,7 +101,7 @@ const TestModalComponent = () => {
             fieldState={values?.user_name}
             onChange={handleFieldChange}
             errorMsg={errors?.user_name}
-            validation={signupSchema?.user_email}
+            // validation={signupSchema?.user_email}
             disabled={false}
             readOnly={false}
             label="Name"
@@ -109,7 +116,7 @@ const TestModalComponent = () => {
             name="user_email"
             fieldState={values?.user_email}
             errorMsg={errors?.user_email}
-            validation={signupSchema?.user_email}
+            // validation={signupSchema?.user_email}
             onChange={handleFieldChange}
             disabled={false}
             readOnly={false}

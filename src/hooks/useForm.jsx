@@ -10,7 +10,6 @@ import { signupErrorMessages } from "../utils/validators";
 const useForm = ({
   initialValues,
   validationSchema,
-  validationErrors,
   errorMsgs,
   formErrors,
   onSubmit,
@@ -47,13 +46,39 @@ const useForm = ({
     [setValues, validationSchema, errors]
   );
   // console.log(errors, "....err state");
-  const handleValidate = () => {};
+  const handleValidate = () => {
+    Object.entries(values).forEach(([fieldName, value]) => {
+      const validationRegex = validationSchema[fieldName];
+      const errorMsg = errorMsgs[fieldName];
+      if (fieldName == "user_dob") {
+        console.log(value);
+      }
+      if (validationRegex && validationRegex.test(value)) {
+        setErrors((prev) => ({
+          ...prev,
+          [fieldName]: "",
+        }));
+      } else {
+        setErrors((prev) => ({
+          ...prev,
+          [fieldName]: errorMsg,
+        }));
+      }
+    });
+  };
   const handleSubmit = (e) => {
     e?.preventDefault?.();
+    handleValidate();
     onSubmit(values);
   };
-  return { handleReset, handleFieldChange, handleValidate, handleSubmit };
-  return <div></div>;
+  return {
+    values,
+    errors,
+    handleReset,
+    handleFieldChange,
+    handleValidate,
+    handleSubmit,
+  };
 };
 
 export default useForm;
