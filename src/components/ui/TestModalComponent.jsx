@@ -95,7 +95,6 @@ const TestModalComponent = () => {
             fieldState={formData.user_email}
             setFieldState={setFormData}
             errorMsg={formErrors?.user_email}
-            validation={signupSchema?.user_email}
             disabled={false}
             readOnly={false}
             label="Email"
@@ -111,6 +110,7 @@ const TestModalComponent = () => {
             dateState={formData.user_dob}
             setDateState={setFormData}
             dateFormat={"mm/dd/yyyy"}
+            errorMsg={formErrors?.user_dob}
           />
         </div>
         <ButtonUI

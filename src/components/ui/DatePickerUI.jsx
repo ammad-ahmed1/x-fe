@@ -7,6 +7,7 @@ const DatePickerUI = ({
   dateState,
   setDateState,
   dateFormat,
+  errorMsg,
   onChange,
 }) => {
   const [yearsArr, setYearsArr] = useState([]);
@@ -162,6 +163,7 @@ const DatePickerUI = ({
           data={monthsArr}
           label="Month"
           size="xs"
+          error={errorMsg}
         />
         {/* day */}
         <SelectUI
@@ -171,6 +173,7 @@ const DatePickerUI = ({
           label="Day"
           size="xs"
           disabled={!date.month}
+          error={errorMsg}
         />
         {/* year */}
         <SelectUI
@@ -184,6 +187,7 @@ const DatePickerUI = ({
       {isShowError && (
         <span className="text-red-500">Age must be more than 18</span>
       )}
+      {errorMsg && <span className="text-red-500">{errorMsg}</span>}
     </div>
   );
 };
