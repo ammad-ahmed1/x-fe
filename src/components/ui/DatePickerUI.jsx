@@ -182,12 +182,13 @@ const DatePickerUI = ({
           data={yearsArr}
           label="Year"
           size="xs"
+          error={errorMsg}
         />
       </div>
       {isShowError && (
         <span className="text-red-500">Age must be more than 18</span>
       )}
-      {errorMsg && <span className="text-red-500">{errorMsg}</span>}
+      {errorMsg !== "" && <span className="text-red-500">{errorMsg}</span>}
     </div>
   );
 };

@@ -116,7 +116,7 @@ const TestModalComponent = () => {
             name="user_email"
             fieldState={values?.user_email}
             errorMsg={errors?.user_email}
-            // validation={signupSchema?.user_email}
+            type={"email"}
             onChange={handleFieldChange}
             disabled={false}
             readOnly={false}
@@ -131,6 +131,7 @@ const TestModalComponent = () => {
             name="user_psw"
             fieldState={values?.user_psw}
             errorMsg={errors?.user_psw}
+            type={"password"}
             onChange={handleFieldChange}
             disabled={false}
             readOnly={false}
