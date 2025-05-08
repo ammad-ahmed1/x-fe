@@ -4,7 +4,6 @@ import { regexValidators } from "../../utils/validators";
 
 const DatePickerUI = ({
   name,
-  dateState,
   setDateState,
   dateFormat,
   errorMsg,
@@ -124,11 +123,7 @@ const DatePickerUI = ({
     // Validate format using regex
     const isValidFormat = regexValidators?.ageDate?.hasOwnProperty(dateFormat);
     const isOfAge = is18OrOlder(formattedDate, dateFormat);
-    // console.log(isValidFormat, "........is valid");
-    // console.log(isOfAge, "........is older");
-    // console.log(formattedDate, "........FD");
     if (isValidFormat && isOfAge) {
-      // console.log("all good");
       setDateState(formattedDate);
       onChange(name, formattedDate);
       setIsShowError(false);
@@ -137,7 +132,6 @@ const DatePickerUI = ({
       setIsShowError(true);
     }
   };
-  // console.log(dateState, ".....final date");
   useEffect(() => {
     groupYearsByDecade();
   }, []);
@@ -145,7 +139,6 @@ const DatePickerUI = ({
     if (date?.month) {
       generateDatesAccordingToMonth();
     }
-    // if (selectedMonth) generateDatesAccordingToMonth();
   }, [date?.month]);
 
   useEffect(() => {
