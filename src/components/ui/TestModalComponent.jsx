@@ -9,14 +9,14 @@ const TestModalComponent = () => {
   const [formData, setFormData] = useState({
     user_name: "",
     user_email: "",
-    user_password: "",
+    user_psw: "",
     user_dob: "",
   });
 
   const [formErrors, setformErrors] = useState({
     user_name: "",
     user_email: "",
-    user_password: "",
+    user_psw: "",
     user_dob: "",
   });
 
@@ -121,7 +121,20 @@ const TestModalComponent = () => {
             disabled={false}
             readOnly={false}
             label="Email"
-            // maxChar={50}
+            startIcon={<i className="fas fa-user"></i>}
+            fullWidth
+            size="xlg"
+            className={" border-none outline-none"}
+            rounded={false}
+          />
+          <TextFieldUI
+            name="user_psw"
+            fieldState={values?.user_psw}
+            errorMsg={errors?.user_psw}
+            onChange={handleFieldChange}
+            disabled={false}
+            readOnly={false}
+            label="Password"
             startIcon={<i className="fas fa-user"></i>}
             fullWidth
             size="xlg"
@@ -134,7 +147,7 @@ const TestModalComponent = () => {
             setDateState={setFormData}
             onChange={handleFieldChange}
             dateFormat={"mm/dd/yyyy"}
-            errorMsg={formErrors?.user_dob}
+            errorMsg={errors?.user_dob}
           />
         </div>
         <ButtonUI
