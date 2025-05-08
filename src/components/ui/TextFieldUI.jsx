@@ -72,13 +72,15 @@ const TextFieldUI = ({
       e.target.previousSibling.classList.remove("text-blue-500");
     }
   }, []);
-
+  console.log(errorMsg, "......errmsg");
   return (
     <div>
+      {errorMsg !== "" ? "Show red" : "show white "}
+      {errorMsg} ss
       <div
         style={sizeStyles[size]}
         className={`relative p-0 w-fit inline-flex items-center ${
-          errorMsg ? "border border-red" : "border border-[rgb(51,54,57)]"
+          errorMsg != "" ? "border border-red" : "border border-[rgb(51,54,57)]"
         } focus-within:border-blue-500 border hover:cursor-text ${
           rounded && rounded
         }`}
