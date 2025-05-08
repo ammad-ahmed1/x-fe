@@ -1,17 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import TextFieldUI from "./TextFieldUI";
 
-const SelectUI = ({
-  data,
-  value,
-  setValue,
-  placeholder,
-  label,
-  size,
-  disabled,
-  endIcon,
-  error,
-}) => {
+const SelectUI = ({ data, value, setValue, label, size, disabled, error }) => {
   const sizeStyles = {
     xs: { width: "100%", height: "300px" },
     sm: { width: "200px", height: "300px" }, // Small size
@@ -54,8 +44,6 @@ const SelectUI = ({
       onBlurCapture={handleBlur}>
       <TextFieldUI
         fieldState={value?.label || value}
-        // setFieldState={setSelectItem}
-        // placeholder={placeholder}
         label={label}
         fullWidth
         size={size}

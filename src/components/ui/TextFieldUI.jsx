@@ -2,20 +2,16 @@ import React, { useCallback, useMemo, useRef, useState } from "react";
 
 const TextFieldUI = ({
   name,
-  state,
   fieldState,
-  setFieldState,
   type,
   placeholder,
   label,
   errorMsg,
-  setErrorMsg,
   disabled,
   readOnly,
   validation,
   startIcon,
   endIcon,
-  fullWidth,
   size,
   className,
   onChange,
@@ -41,19 +37,6 @@ const TextFieldUI = ({
   const [labelClass, setLabelClass] = useState(inActiveFieldClass);
   const [isShowErrorMsg, setIsShowErrorMsg] = useState(false);
 
-  // const handleChange = useCallback(
-  //   (val) => {
-  //     setFieldState((prev) => ({
-  //       ...prev,
-  //       [name]: val, // dynamically update the correct field
-  //     }));
-
-  //     if (validation?.test(val)) {
-  //       setIsShowErrorMsg(false);
-  //     }
-  //   },
-  //   [setFieldState]
-  // );
   const handleChange = (e) => {
     const { name, value } = e.target;
     onChange(name, value, validation);
@@ -141,11 +124,7 @@ const TextFieldUI = ({
         />
         {endIcon && endIcon}
       </div>
-      {/* {errorMsg && isShowErrorMsg && (
-        <span id="error-message" className="text-red-500">
-          {errorMsg}
-        </span>
-      )} */}
+
       {errorMsg && !isHideErrMsg && (
         <span id="error-message" className="text-red-500">
           {errorMsg}
