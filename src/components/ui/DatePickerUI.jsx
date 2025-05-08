@@ -124,11 +124,11 @@ const DatePickerUI = ({
     // Validate format using regex
     const isValidFormat = regexValidators?.ageDate?.hasOwnProperty(dateFormat);
     const isOfAge = is18OrOlder(formattedDate, dateFormat);
-    console.log(isValidFormat, "........is valid");
-    console.log(isOfAge, "........is older");
-    console.log(formattedDate, "........FD");
+    // console.log(isValidFormat, "........is valid");
+    // console.log(isOfAge, "........is older");
+    // console.log(formattedDate, "........FD");
     if (isValidFormat && isOfAge) {
-      console.log("all good");
+      // console.log("all good");
       setDateState(formattedDate);
       onChange(name, formattedDate);
       setIsShowError(false);
@@ -182,12 +182,13 @@ const DatePickerUI = ({
           data={yearsArr}
           label="Year"
           size="xs"
+          error={errorMsg}
         />
       </div>
       {isShowError && (
         <span className="text-red-500">Age must be more than 18</span>
       )}
-      {errorMsg && <span className="text-red-500">{errorMsg}</span>}
+      {errorMsg !== "" && <span className="text-red-500">{errorMsg}</span>}
     </div>
   );
 };

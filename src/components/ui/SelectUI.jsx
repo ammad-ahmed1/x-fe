@@ -49,7 +49,7 @@ const SelectUI = ({
   }, [selectItem]);
   return (
     <div
-      className="relative"
+      className="relative border-white-900"
       onFocusCapture={() => handleShowDropdown()}
       onBlurCapture={handleBlur}>
       <TextFieldUI
@@ -61,6 +61,8 @@ const SelectUI = ({
         size={size}
         disabled={disabled}
         className={"border-none outline-none"}
+        errorMsg={error}
+        isHideErrMsg={true}
       />
 
       <div

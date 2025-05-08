@@ -22,6 +22,7 @@ const TextFieldUI = ({
   maxChar,
   minChar,
   rounded,
+  isHideErrMsg = false,
 }) => {
   const sizeStyles = useMemo(
     () => ({
@@ -72,25 +73,26 @@ const TextFieldUI = ({
       e.target.previousSibling.classList.remove("text-blue-500");
     }
   }, []);
-  console.log(errorMsg, "......errmsg");
   return (
     <div>
-      {errorMsg !== "" ? "Show red" : "show white "}
-      {errorMsg} ss
       <div
         style={sizeStyles[size]}
         className={`relative p-0 w-fit inline-flex items-center ${
-          errorMsg != "" ? "border border-red" : "border border-[rgb(51,54,57)]"
-        } focus-within:border-blue-500 border hover:cursor-text ${
-          rounded && rounded
-        }`}
+          errorMsg !== ""
+            ? "border border-red-500"
+            : "border border-[rgb(51,54,57)]"
+        } focus-within:  ${
+          errorMsg !== "" ? "border border-red-500" : "border-blue-500 border"
+        } hover:cursor-text ${rounded && rounded}`}
         onClick={() => {
           inputRef.current.focus();
         }}>
         {label && (
           <label
             htmlFor="input-field"
-            className={`transition-all duration-300 ${labelClass} ${errorMsg} ? "text-red-500" : ""`}>
+            className={`transition-all duration-300 ${labelClass} ${
+              errorMsg !== "" ? "text-red-500" : ""
+            }`}>
             {label}
           </label>
         )}
@@ -144,7 +146,7 @@ const TextFieldUI = ({
           {errorMsg}
         </span>
       )} */}
-      {errorMsg && (
+      {errorMsg && !isHideErrMsg && (
         <span id="error-message" className="text-red-500">
           {errorMsg}
         </span>
