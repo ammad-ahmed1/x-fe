@@ -101,11 +101,9 @@ const TestModalComponent = () => {
             fieldState={values?.user_name}
             onChange={handleFieldChange}
             errorMsg={errors?.user_name}
-            // validation={signupSchema?.user_email}
             disabled={false}
             readOnly={false}
             label="Name"
-            // maxChar={50}
             startIcon={<i className="fas fa-user"></i>}
             fullWidth
             size="xlg"
