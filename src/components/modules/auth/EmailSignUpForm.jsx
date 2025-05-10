@@ -6,8 +6,10 @@ import DatePickerUI from "../../ui/DatePickerUI";
 import MobileDateInputUI from "../../ui/MobileDateInputUI";
 import useForm from "../../../hooks/useForm";
 import { signupSchema, signupErrorMessages } from "../../../utils/validators";
+import { useNavigate } from "react-router-dom";
 
 const EmailSignUpForm = () => {
+  const nav = useNavigate();
   const [formData, setFormData] = useState({
     user_name: "",
     user_email: "",
@@ -37,6 +39,7 @@ const EmailSignUpForm = () => {
     onSubmit: (values) => {
       console.log("Form submitted", values);
       handleValidate();
+      nav("/home");
     },
   });
 

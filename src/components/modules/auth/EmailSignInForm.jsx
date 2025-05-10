@@ -5,9 +5,10 @@ import { AppleSVG, GoogleSVG } from "../../../../public/SVGs";
 import TextFieldUI from "../../ui/TextFieldUI";
 import useForm from "../../../hooks/useForm";
 import { signinErrorMessages, signinSchema } from "../../../utils/validators";
-// import { signinSchema, signinErrorMessages } from "../../../utils/validators";
+import { useNavigate } from "react-router-dom";
 
 const EmailSignInForm = () => {
+  const nav = useNavigate();
   const {
     values,
     errors,
@@ -29,6 +30,7 @@ const EmailSignInForm = () => {
     onSubmit: (values) => {
       console.log("Sign in with:", values);
       handleValidate();
+      nav("/home");
     },
   });
 
