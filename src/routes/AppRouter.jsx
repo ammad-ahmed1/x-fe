@@ -13,6 +13,7 @@ const AppRouter = () => {
       <Routes>
         {/* Public Routes */}
         <Route path="/login" element={<SignIn />} />
+        <Route path="/" element={<SignIn />} />
         {/* <Route path="/register" element={<Register />} /> */}
 
         {/* Protected Routes */}
@@ -21,14 +22,6 @@ const AppRouter = () => {
           element={
             <ProtectedRoute>
               <Homepage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/profile/:username"
-          element={
-            <ProtectedRoute>
-              <Profile />
             </ProtectedRoute>
           }
         />
