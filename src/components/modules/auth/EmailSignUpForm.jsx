@@ -4,99 +4,128 @@ import ModalUI from "../../ui/ModalUI";
 import ButtonUI from "../../ui/ButtonUI";
 import DatePickerUI from "../../ui/DatePickerUI";
 import MobileDateInputUI from "../../ui/MobileDateInputUI";
-import { regexValidators } from "../../../utils/validators";
+import useForm from "../../../hooks/useForm";
+import { signupSchema, signupErrorMessages } from "../../../utils/validators";
 
 const EmailSignUpForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [dateState, setDateState] = useState(null);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(dateState);
-    console.log("Form submitted!");
-  };
-  return (
-    <div className="">
-      <form onSubmit={handleSubmit}>
-        <div className="flex flex-col w-[270px] md:w-[465px] gap-4">
-          <TextFieldUI
-            fieldState={name}
-            setFieldState={setName}
-            disabled={false}
-            readOnly={false}
-            label="Name"
-            maxChar={150}
-            validation={regexValidators.name}
-            errorMsg={"Please enter a valid name format"}
-            startIcon={<i className="fas fa-user"></i>}
-            fullWidth
-            size="xlg"
-            className={" border-none outline-none"}
-            rounded={false}
-          />
-          <TextFieldUI
-            fieldState={email}
-            setFieldState={setEmail}
-            disabled={false}
-            readOnly={false}
-            label="Email"
-            // maxChar={50}
-            validation={regexValidators.email}
-            errorMsg={"Please enter a valid email address"}
-            startIcon={<i className="fas fa-user"></i>}
-            fullWidth
-            size="xlg"
-            className={" border-none outline-none"}
-            rounded={false}
-          />
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    user_psw: "",
+    user_dob: "",
+  });
 
-          <div className=" mt-4 max-w-[400px]" role="note">
-            <h3
-              className="text-gray-200 text-[15px] font-bold"
-              id="dob-disclaimer"
-            >
-              Date of birth
-            </h3>
-            <p
-              className="text-gray-500 text-[13px] mt-1"
-              aria-labelledby="dob-disclaimer"
-            >
-              This will not be shown publicly. Confirm your own age, even if
-              this account is for a business, a pet, or something else.
-            </p>
-          </div>
-          <span className="hidden md:block">
-            <DatePickerUI setDateState={setDateState} dateFormat="mm/dd/yy" />
-          </span>
-          <span className="block md:hidden">
-            <MobileDateInputUI />
-          </span>
-          <div className="my-8 mx-auto flex justify center">
-            <ButtonUI
-              label={"Next"}
-              // size="x-large"
-              bgColor={"gray"}
-              textColor="black"
-              externalClass="h-[50px] w-[270px] md:w-[450px] bg-gray-500 text-black"
-            />
-          </div>
-        </div>
-      </form>
-    </div>
+  const [formErrors, setformErrors] = useState({
+    user_name: "",
+    user_email: "",
+    user_psw: "",
+    user_dob: "",
+  });
+
+  const {
+    values,
+    errors,
+    handleFieldChange,
+    handleSubmit,
+    handleReset,
+    handleValidate,
+  } = useForm({
+    initialValues: formData,
+    validationSchema: signupSchema,
+    formErrors: formErrors,
+    errorMsgs: signupErrorMessages,
+    onSubmit: (values) => {
+      console.log("Form submitted", values);
+      handleValidate();
+    },
+  });
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col w-[270px] md:w-[465px] gap-4">
+      <TextFieldUI
+        name="user_name"
+        fieldState={values?.user_name}
+        onChange={handleFieldChange}
+        errorMsg={errors?.user_name}
+        disabled={false}
+        readOnly={false}
+        label="Name"
+        startIcon={<i className="fas fa-user"></i>}
+        fullWidth
+        size="xlg"
+        className="border-none outline-none"
+        rounded={false}
+      />
+
+      <TextFieldUI
+        name="user_email"
+        fieldState={values?.user_email}
+        onChange={handleFieldChange}
+        errorMsg={errors?.user_email}
+        type="email"
+        disabled={false}
+        readOnly={false}
+        label="Email"
+        startIcon={<i className="fas fa-envelope"></i>}
+        fullWidth
+        size="xlg"
+        className="border-none outline-none"
+        rounded={false}
+      />
+
+      <TextFieldUI
+        name="user_psw"
+        fieldState={values?.user_psw}
+        onChange={handleFieldChange}
+        errorMsg={errors?.user_psw}
+        type="password"
+        disabled={false}
+        readOnly={false}
+        label="Password"
+        startIcon={<i className="fas fa-lock"></i>}
+        fullWidth
+        size="xlg"
+        className="border-none outline-none"
+        rounded={false}
+      />
+
+      <div className="mt-4 max-w-[400px]" role="note">
+        <h3 className="text-gray-200 text-[15px] font-bold" id="dob-disclaimer">
+          Date of birth
+        </h3>
+        <p className="text-gray-500 text-[13px] mt-1">
+          This will not be shown publicly. Confirm your own age, even if this
+          account is for a business, a pet, or something else.
+        </p>
+      </div>
+
+      <span className="hidden md:block">
+        <DatePickerUI
+          name="user_dob"
+          dateState={values?.user_dob}
+          setDateState={setFormData}
+          onChange={handleFieldChange}
+          dateFormat="mm/dd/yyyy"
+          errorMsg={errors?.user_dob}
+        />
+      </span>
+
+      <span className="block md:hidden">
+        <MobileDateInputUI />
+      </span>
+
+      <div className="my-8 mx-auto flex justify-center">
+        <ButtonUI
+          label="Next"
+          bgColor="gray"
+          textColor="black"
+          externalClass="h-[50px] w-[270px] md:w-[450px] bg-gray-500 text-black"
+        />
+      </div>
+    </form>
   );
 };
 
 export default EmailSignUpForm;
-{
-  /* <div className="flex justify-start">
-          <h2 className="text-3xl my-4 font-bold text-white">
-            {"Create your account"}
-          </h2>
-        </div> */
-}
-{
-  /* <textarea
-            className="w-full p-2 border rounded"
-            placeholder="What's happening?"
-          /> */
-}
