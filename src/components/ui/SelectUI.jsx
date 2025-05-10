@@ -1,18 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import TextFieldUI from "./TextFieldUI";
 
-const SelectUI = ({
-  data,
-  value,
-  setValue,
-  placeholder,
-  label,
-  size,
-  disabled,
-  endIcon,
-}) => {
+const SelectUI = ({ data, value, setValue, label, size, disabled, error }) => {
   const sizeStyles = {
-    xs: { width: "200px", height: "300px" },
+    xs: { width: "100%", height: "300px" },
     sm: { width: "200px", height: "300px" }, // Small size
     md: { width: "300px", height: "300px" }, // Medium (default)
     lg: { width: "400px", height: "300px" }, // Large size
@@ -27,7 +18,6 @@ const SelectUI = ({
         className="cursor-pointer"
         onMouseDown={(e) => {
           e.stopPropagation();
-          console.log(item);
           // setSelectItem(item);
           setValue(item);
         }}>
@@ -48,21 +38,24 @@ const SelectUI = ({
     setValue(selectItem);
   }, [selectItem]);
   return (
-    <div onFocusCapture={() => handleShowDropdown()} onBlurCapture={handleBlur}>
+    <div
+      className="relative border-white-900"
+      onFocusCapture={() => handleShowDropdown()}
+      onBlurCapture={handleBlur}>
       <TextFieldUI
         fieldState={value?.label || value}
-        // setFieldState={setSelectItem}
-        // placeholder={placeholder}
         label={label}
         fullWidth
         size={size}
         disabled={disabled}
         className={"border-none outline-none"}
+        errorMsg={error}
+        isHideErrMsg={true}
       />
 
       <div
         ref={dropdownRef}
-        className={`h-[200px] w-[300px] overflow-hidden rounded-lg bg-black border border-[rgb(51,54,57)] shadow-[0_0_15px_rgba(255,255,255,0.1)] overflow-y-auto ${
+        className={`absolute z-50 h-[250px] w-full w-${size} overflow-hidden rounded-lg bg-black border border-[rgb(51,54,57)] shadow-[0_0_15px_rgba(255,255,255,0.1)] overflow-y-auto ${
           !isShowDropdown && "hidden"
         }`}>
         {data?.map((item, index) => (

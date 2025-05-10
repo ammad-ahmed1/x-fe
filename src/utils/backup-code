@@ -1,0 +1,23 @@
+// TextFieldUI handleChange function
+// const handleChange = useCallback(
+//   (val) => {
+//     setFieldState((prev) => ({
+//       ...prev,
+//       [name]: val, // dynamically update the correct field
+//     }));
+
+//     if (validation?.test(val)) {
+//       setIsShowErrorMsg(false);
+//     }
+//   },
+//   [setFieldState]
+// );
+//   -------------------------
+//error text
+{
+  /* {errorMsg && isShowErrorMsg && (
+        <span id="error-message" className="text-red-500">
+          {errorMsg}
+        </span>
+      )} */
+}

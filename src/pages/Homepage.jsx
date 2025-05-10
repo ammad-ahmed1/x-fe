@@ -17,7 +17,7 @@ const Homepage = () => {
   const handleShowModal = () => {
     setIsShowModal(!isShowModal);
   };
-  console.log(dateState, "................date");
+
   return (
     <>
       <button onClick={handleShowModal}> Click me</button>
@@ -34,10 +34,7 @@ const Homepage = () => {
           size="large"
           title={"Create your account"}
           footer={
-            <button
-              className="px-4 py-2 bg-blue-500 text-white rounded"
-              onClick={() => console.log("Tweet posted!")}
-            >
+            <button className="px-4 py-2 bg-blue-500 text-white rounded">
               Tweet
             </button>
           }
